@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battalion Chief Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    .button-row {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      background: #1d4ed8;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button.secondary {
+      background: #374151;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Battalion Chief Dashboard</h1>
+      <p class="subtitle">
+        An interactive dashboard for visualizing fire-rescue incident activity, turnout performance, and battalion-level operational metrics.
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>Project Overview</h2>
+      <p>
+        This project is being developed for a graduate Information Visualization course at Florida Institute of Technology.
+        The goal is to create an interactive dashboard that helps Battalion Chiefs monitor operational activity, compare unit performance,
+        and identify meaningful trends in incident data.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Planned Dashboard Features</h2>
+      <ul>
+        <li>Turnout time compliance by unit</li>
+        <li>Incident volume and workload comparisons</li>
+        <li>Incident type breakdowns</li>
+        <li>Timeline-based incident activity views</li>
+        <li>Map-based incident visualization</li>
+        <li>Interactive filtering by date, shift, battalion, and unit</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Development Status</h2>
+      <p>
+        The project is currently in early development. Initial work is focused on repository setup, data inspection,
+        preprocessing pipeline design, and preparation of structured data for use in the dashboard interface.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="dashboard.html">Open Dashboard Prototype</a>
+        <a class="button secondary" href="README.md">View Project README</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Created by Maria Linkins-Nielsen · Graduate Information Visualization Project
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
