@@ -1,0 +1,28 @@
+incident,incident_date,unit_back_in_service_time,station_group,station,shift,vehicle_id,epcr_status,crew_member_completing,incident_date_parsed,unit_back_in_service_time_parsed
+482917305,9/14/2025,9/14/2025 7:30,Battalion 2,37 - Solivita,A,MR037,Draft,"Butler, Alan",2025-09-14,2025-09-14 07:30:00
+739104826,10/7/2025,10/7/2025 10:35,Battalion 5,13 - Watkins Road,A,MR037,Draft,"Butler, Alan",2025-10-07,2025-10-07 10:35:00
+615382947,11/9/2025,,Battalion 1,22 - Gibsonia,A,MD222,Draft,"Hamilton, Ryan",2025-11-09,
+928473650,1/11/2026,1/11/2026 0:00,Battalion 3,34 - South Lakeland,A,MD234,Draft,"Turner, Sonia",2026-01-11,2026-01-11 00:00:00
+154809372,2/11/2026,2/11/2026 8:56,Battalion 5,30 - Haines City,A,MR030,Draft,"Brugess, Blake",2026-02-11,2026-02-11 08:56:00
+806271493,2/11/2026,2/11/2026 11:21,Battalion 5,3 - Lake Hamilton,B,MR018,Draft,"Rampling, Matt",2026-02-11,2026-02-11 11:21:00
+397582614,2/11/2026,2/11/2026 12:40,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-11,2026-02-11 12:40:00
+264918735,2/11/2026,2/11/2026 13:00,Battalion 4,18 - Cypress Gardens,B,MR018,Draft,"Rampling, Matt",2026-02-11,2026-02-11 13:00:00
+571630829,2/11/2026,,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-11,
+843729156,2/11/2026,,Battalion 4,18 - Cypress Gardens,B,MR018,Draft,"Rampling, Matt",2026-02-11,
+290617483,2/11/2026,,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-11,
+716453902,2/11/2026,,Battalion 5,45 - Dundee,B,MR045,Draft,"Kerr, Virginia",2026-02-11,
+509182746,2/11/2026,,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-11,
+368975214,2/11/2026,,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-11,
+927104568,2/11/2026,2/11/2026 17:20,Battalion 1,31 - West Lakeland,B,MD031,Draft,"Berry, Gordon",2026-02-11,2026-02-11 17:20:00
+481239670,2/12/2026,2/12/2026 4:43,Battalion 4,18 - Cypress Gardens,B,MR218,Draft,"Ball, Jacob",2026-02-12,2026-02-12 04:43:00
+753820491,2/12/2026,2/12/2026 4:27,Battalion 7,1 - Babson Park,B,MR026,Draft,"Bailey, Liam",2026-02-12,2026-02-12 04:27:00
+214769385,2/12/2026,,Battalion 3,32 - East Lakeland,B,MD032,Draft,"Arnold, Anthony",2026-02-12,
+690431827,2/12/2026,,Battalion 4,18 - Cypress Gardens,B,MR218,Draft,"Ball, Jacob",2026-02-12,
+875206149,2/12/2026,2/12/2026 7:54,Battalion 6,9 - Bartow,B,MD209,Draft,"Miller, Peter",2026-02-12,2026-02-12 07:54:00
+132948756,2/12/2026,,Battalion 5,30 - Haines City,B,MR030,Draft,"Brugess, Blake",2026-02-12,
+647105938,2/12/2026,,Battalion 1,22 - Gibsonia,B,MD222,Draft,"Vance, Joshua",2026-02-12,
+908362471,2/12/2026,,Battalion 4,5 - Jan Phyl,B,MR005,Draft,"Walsh, Amelia",2026-02-12,
+521894063,2/12/2026,,Battalion 5,45 - Dundee,B,MR045,Draft,"Knox, Connor",2026-02-12,
+739581024,2/12/2026,,Battalion 1,24 - Winston Creek,B,MR024,Draft,"Henderson, Stephanie",2026-02-12,
+284673195,2/12/2026,,Battalion 4,18 - Cypress Gardens,B,MR018,Draft,"Rampling, Matt",2026-02-12,
+615209387,2/12/2026,2/12/2026 7:32,Battalion 4,5 - Jan Phyl,B,EN017,Draft,"Lambert, Keith",2026-02-12,2026-02-12 07:32:00

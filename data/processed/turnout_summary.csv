@@ -1,0 +1,76 @@
+unit,total_calls,met_calls,missed_calls,compliance_rate,battalion,unit_type
+BR004,1,0,1,0.0,Battalion 6,Brush Truck
+EN012,1,0,1,0.0,Battalion 7,Engine
+EN019,1,0,1,0.0,Battalion 4,Engine
+MD009,1,0,1,0.0,Battalion 6,Rescue
+MD034,1,0,1,0.0,Battalion 3,Rescue
+MR033,1,0,1,0.0,Battalion 2,Rescue
+BC006,2,1,1,0.5,Battalion 6,Battalion Chief
+EN006,4,2,2,0.5,Battalion 1,Engine
+EN046,2,1,1,0.5,Battalion 5,Engine
+LD023,2,1,1,0.5,Battalion 1,Ladder
+LD042,4,2,2,0.5,Battalion 2,Ladder
+MD216,2,1,1,0.5,Battalion 4,Rescue
+MD232,2,1,1,0.5,Battalion 3,Rescue
+MR023,2,1,1,0.5,Battalion 1,Rescue
+MD031,3,2,1,0.6666666666666666,Battalion 1,Rescue
+BC002,1,1,0,1.0,Battalion 2,Battalion Chief
+BC003,2,2,0,1.0,Battalion 3,Battalion Chief
+BC004,1,1,0,1.0,Battalion 4,Battalion Chief
+BC005,2,2,0,1.0,Battalion 5,Battalion Chief
+BC007,1,1,0,1.0,Battalion 7,Battalion Chief
+BR005,1,1,0,1.0,Battalion 4,Brush Truck
+BR015,1,1,0,1.0,Battalion 6,Brush Truck
+BR021,1,1,0,1.0,Battalion 7,Brush Truck
+EN002,4,4,0,1.0,Battalion 6,Engine
+EN004,1,1,0,1.0,Battalion 6,Engine
+EN005,4,4,0,1.0,Battalion 4,Engine
+EN008,4,4,0,1.0,Battalion 6,Engine
+EN010,1,1,0,1.0,Battalion 6,Engine
+EN017,3,3,0,1.0,Battalion 4,Engine
+EN018,1,1,0,1.0,Battalion 4,Engine
+EN020,1,1,0,1.0,Battalion 2,Engine
+EN028,2,2,0,1.0,Battalion 3,Engine
+EN033,3,3,0,1.0,Battalion 2,Engine
+EN035,1,1,0,1.0,Battalion 3,Engine
+EN036,3,3,0,1.0,Battalion 2,Engine
+EN037,1,1,0,1.0,Battalion 5,Engine
+EN038,1,1,0,1.0,Battalion 2,Engine
+HV009,1,1,0,1.0,Battalion 3,Special Operations
+LD015,2,2,0,1.0,Battalion 6,Special Operations
+MD016,1,1,0,1.0,Battalion 4,Rescue
+MD022,2,2,0,1.0,Battalion 1,Rescue
+MD029,3,3,0,1.0,Battalion 4,Rescue
+MD032,3,3,0,1.0,Battalion 3,Rescue
+MD209,2,2,0,1.0,Battalion 6,Rescue
+MD222,3,3,0,1.0,Battalion 1,Rescue
+MD229,3,3,0,1.0,Battalion 4,Rescue
+MD231,2,2,0,1.0,Battalion 1,Rescue
+MD234,1,1,0,1.0,Battalion 3,Rescue
+MR002,2,2,0,1.0,Battalion 6,Rescue
+MR005,1,1,0,1.0,Battalion 4,Rescue
+MR006,4,4,0,1.0,Battalion 1,Rescue
+MR010,1,1,0,1.0,Battalion 6,Rescue
+MR011,1,1,0,1.0,Battalion 7,Rescue
+MR012,2,2,0,1.0,Battalion 7,Rescue
+MR014,1,1,0,1.0,Battalion 7,Rescue
+MR015,2,2,0,1.0,Battalion 6,Rescue
+MR017,2,2,0,1.0,Battalion 4,Rescue
+MR018,1,1,0,1.0,Battalion 4,Rescue
+MR020,2,2,0,1.0,Battalion 2,Rescue
+MR024,1,1,0,1.0,Battalion 1,Rescue
+MR026,2,2,0,1.0,Battalion 7,Rescue
+MR028,2,2,0,1.0,Battalion 3,Rescue
+MR030,1,1,0,1.0,Battalion 5,Rescue
+MR035,2,2,0,1.0,Battalion 3,Rescue
+MR036,2,2,0,1.0,Battalion 2,Rescue
+MR037,1,1,0,1.0,Battalion 5,Rescue
+MR038,1,1,0,1.0,Battalion 2,Rescue
+MR039,1,1,0,1.0,Battalion 3,Rescue
+MR042,1,1,0,1.0,Battalion 2,Rescue
+MR046,2,2,0,1.0,Battalion 5,Rescue
+MR230,1,1,0,1.0,Battalion 5,Rescue
+SQ007,1,1,0,1.0,Battalion 2,Special Operations
+SQ021,1,1,0,1.0,Battalion 7,Special Operations
+TE015,1,1,0,1.0,Battalion 6,Tender
+TW033,2,2,0,1.0,Battalion 2,Special Operations
