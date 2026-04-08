@@ -1,0 +1,47 @@
+Call Sign
+Unit Type
+Definition
+
+MRxxx
+Ambulance
+Rescue - Ambulance staffed by cross trained Fire/EMS personnel
+
+MDxxx
+Ambulance
+Medic - Ambulance staffed by EMS only  certified personnel
+
+BCxxx
+Battalion Chief
+Area supervisor who oversees a geographic portion of the county that contains a number of fire and ambulance stations
+
+ENxxx
+Engine
+Fire apparatus - aka “Pumper”
+
+LDxxx
+Ladder
+Fire apparatus with an aerial ladder
+
+TWxxx
+Tower
+Fire apparatus with an aerial platform (larger ladder with a bucket on the top)
+
+HBV009
+Heavy Rescue
+Specialized vehicle for technical rescues (high angle, trench, confined space) also serves as a hazardous materials unit
+
+SQxxx
+Squad
+Specialized engine with extrication and hazmat capabilities
+
+PMxxx
+Community Paramedic
+Specialized EMS personnel who work with certain patients to prevent or limit their use of the 911 and hospital system
+
+BRxxx
+Brush Truck
+Off road woodland / brush firefighting vehicle
+
+TExxx
+Tender
+Fire apparatus used to transport water for areas not served by fire hydrants aka Tanker

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -366,3 +367,214 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battalion Chief Operational Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Battalion Chief Operational Dashboard</h1>
+        <p class="subtitle">
+          Fire-rescue operational overview for battalion-level situational awareness
+        </p>
+      </div>
+
+      <div class="topbar-right">
+        <div class="status-chip">
+          <span class="status-label">Last Updated</span>
+          <span id="lastUpdated">--</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="filter-bar card">
+      <div class="filter-group">
+        <label for="shiftFilter">Shift</label>
+        <select id="shiftFilter">
+          <option value="All">All</option>
+          <option value="A">A Shift</option>
+          <option value="B">B Shift</option>
+          <option value="C">C Shift</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="battalionFilter">Battalion</label>
+        <select id="battalionFilter">
+          <option value="All">All</option>
+          <option value="Battalion 1">Battalion 1</option>
+          <option value="Battalion 2">Battalion 2</option>
+          <option value="Battalion 3">Battalion 3</option>
+          <option value="Battalion 4">Battalion 4</option>
+          <option value="Battalion 5">Battalion 5</option>
+          <option value="Battalion 6">Battalion 6</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button id="resetFilters" class="secondary-btn">Reset Filters</button>
+      </div>
+
+      <div class="active-filters">
+        <span class="active-pill">Shift: <strong id="activeShift">All</strong></span>
+        <span class="active-pill">Battalion: <strong id="activeBattalion">All</strong></span>
+      </div>
+    </section>
+
+    <main class="dashboard-grid">
+      <section class="summary-row">
+        <article class="summary-card card">
+          <div class="summary-label">Turnout Compliance</div>
+          <div class="summary-value" id="kpiTurnout">--</div>
+          <div class="summary-subtext">Overall compliant turnout rate</div>
+        </article>
+
+        <article class="summary-card card alert-card">
+          <div class="summary-label">Units Out of Service</div>
+          <div class="summary-value" id="kpiOOS">--</div>
+          <div class="summary-subtext">Units currently unavailable</div>
+        </article>
+
+        <article class="summary-card card warning-card">
+          <div class="summary-label">Ambulance UHU</div>
+          <div class="summary-value" id="kpiUHU">--</div>
+          <div class="summary-subtext">Average utilization factor</div>
+        </article>
+
+        <article class="summary-card card">
+          <div class="summary-label">Overdue Reports</div>
+          <div class="summary-value" id="kpiReports">--</div>
+          <div class="summary-subtext">Reports requiring completion</div>
+        </article>
+      </section>
+
+      <section class="primary-row">
+        <article class="panel card panel-large">
+          <div class="panel-header">
+            <div>
+              <h2>Turnout Compliance by Unit</h2>
+              <p>MET vs MISSED turnout activity by responding unit</p>
+            </div>
+
+            <div class="panel-controls">
+              <label for="turnoutSort">Sort</label>
+              <select id="turnoutSort">
+                <option value="compliance">Compliance</option>
+                <option value="missed">Missed Calls</option>
+                <option value="unit">Unit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="chart-wrapper">
+            <canvas id="turnoutChart"></canvas>
+          </div>
+        </article>
+
+        <article class="panel card panel-medium">
+          <div class="panel-header">
+            <div>
+              <h2>Out of Service Units</h2>
+              <p>Current unavailable units grouped by type. Hover a unit type to inspect affected apparatus.</p>
+            </div>
+          </div>
+
+          <div class="oos-legend" aria-hidden="true">
+            <span class="oos-legend-chip severity-normal">Under 2 hrs</span>
+            <span class="oos-legend-chip severity-warning">2 to 4 hrs</span>
+            <span class="oos-legend-chip severity-critical">4+ hrs</span>
+          </div>
+
+          <div id="oosView" class="oos-view"></div>
+          <div id="oosEmptyState" class="oos-empty" hidden>
+            No out of service units in the current view.
+          </div>
+        </article>
+      </section>
+
+      <section class="secondary-row">
+        <article class="panel card">
+          <div class="panel-header">
+            <div>
+              <h2>Ambulance UHU / Workload</h2>
+              <p>Unit-hour utilization and call burden by ambulance</p>
+            </div>
+
+            <div class="panel-controls">
+              <label for="uhuSort">Sort</label>
+              <select id="uhuSort">
+                <option value="uhu">UHU</option>
+                <option value="calls">Call Count</option>
+                <option value="unit">Unit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="chart-wrapper small-chart">
+            <canvas id="uhuChart"></canvas>
+          </div>
+        </article>
+
+        <article class="panel card">
+          <div class="panel-header">
+            <div>
+              <h2>STEMI Cases</h2>
+              <p>Selected case metrics and transport timing details</p>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Incident</th>
+                  <th>Patient</th>
+                  <th>DOB</th>
+                  <th>Destination</th>
+                  <th>Dispatch to Destination</th>
+                </tr>
+              </thead>
+              <tbody id="stemiTableBody"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel card">
+          <div class="panel-header">
+            <div>
+              <h2>Overdue Reports</h2>
+              <p>Documentation status and assigned crew member</p>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Incident</th>
+                  <th>Date</th>
+                  <th>Unit</th>
+                  <th>Status</th>
+                  <th>Crew Member</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+>>>>>>> dc4edd8 (- Refine dashboard layout and add icon-based OOS view)
