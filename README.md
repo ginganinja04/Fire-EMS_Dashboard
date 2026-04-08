@@ -59,8 +59,6 @@ Fire-EMS_Dashboard/
 
 - `docs/`: static site files used by the dashboard and GitHub Pages
 - `docs/data/processed/`: JSON data consumed directly by the browser app
-- `data/raw/`: original source CSV exports
-- `data/processed/`: cleaned and summarized outputs from preprocessing scripts
 - `scripts/`: Python utilities for inspecting and transforming source data
 - `notes/`: proposal material and local reference notes
 
