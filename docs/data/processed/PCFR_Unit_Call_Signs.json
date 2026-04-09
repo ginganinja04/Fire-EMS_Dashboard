@@ -1,0 +1,2045 @@
+[
+    {
+        "UnitCallSignID":2203,
+        "UnitCallSign":"AM039",
+        "ReportName":"39 Saddlecreek",
+        "ReportTypeDesc":"Mini Pumper",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":2377,
+        "UnitCallSign":"AT002",
+        "ReportName":"02 Medulla",
+        "ReportTypeDesc":"Air Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":null,
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":2347,
+        "UnitCallSign":"AT038",
+        "ReportName":"38 Cottonwood",
+        "ReportTypeDesc":"Air Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":1031,
+        "UnitCallSign":"ATV1",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":1032,
+        "UnitCallSign":"ATV2",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":7,
+        "UnitCallSign":"BC001",
+        "ReportName":"B1 Battalion 1",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":8,
+        "UnitCallSign":"BC002",
+        "ReportName":"B2 Battalion 2",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":9,
+        "UnitCallSign":"BC003",
+        "ReportName":"B3 Battalion 3",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":1,
+        "UnitCallSign":"BC004",
+        "ReportName":"B4 Battalion 4",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":901,
+        "UnitCallSign":"BC005",
+        "ReportName":"B5 Battalion 5",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":902,
+        "UnitCallSign":"BC006",
+        "ReportName":"B6 Battalion 6",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":903,
+        "UnitCallSign":"BC007",
+        "ReportName":"B7 Battalion 7",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":839,
+        "UnitCallSign":"BR001",
+        "ReportName":"01 Babson Park",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":824,
+        "UnitCallSign":"BR004",
+        "ReportName":"04 Bradley",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":866,
+        "UnitCallSign":"BR005",
+        "ReportName":"05 Jan Phyl",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":854,
+        "UnitCallSign":"BR006",
+        "ReportName":"06 Providence",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":863,
+        "UnitCallSign":"BR007",
+        "ReportName":"07 Polk City",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":869,
+        "UnitCallSign":"BR008",
+        "ReportName":"08 Willow Oak",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":829,
+        "UnitCallSign":"BR009",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":942,
+        "UnitCallSign":"BR010",
+        "ReportName":"10 Fort Meade",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":2201,
+        "UnitCallSign":"BR012",
+        "ReportName":"12 East Frostproof",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":907,
+        "UnitCallSign":"BR013",
+        "ReportName":"13 Watkins",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":842,
+        "UnitCallSign":"BR014",
+        "ReportName":"14 Nalcrest",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":867,
+        "UnitCallSign":"BR015",
+        "ReportName":"15 Mulberry",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":822,
+        "UnitCallSign":"BR019",
+        "ReportName":"19 Peace Creek",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":2209,
+        "UnitCallSign":"BR020",
+        "ReportName":"20 Loughman",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":835,
+        "UnitCallSign":"BR021",
+        "ReportName":"21 Caloosa Lake",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":2261,
+        "UnitCallSign":"BR023",
+        "ReportName":"23 Kathleen",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2321,
+        "UnitCallSign":"BR024",
+        "ReportName":"24 Winston Creek",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":832,
+        "UnitCallSign":"BR026",
+        "ReportName":"26 Golfview",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":845,
+        "UnitCallSign":"BR027",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":878,
+        "UnitCallSign":"BR028",
+        "ReportName":"28 Highland City",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":923,
+        "UnitCallSign":"BR042",
+        "ReportName":"42 Four Corners",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":905,
+        "UnitCallSign":"BR046",
+        "ReportName":"46 Lake Marion Creek",
+        "ReportTypeDesc":"Brush Truck",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":2352,
+        "UnitCallSign":"BU001",
+        "ReportName":"05 Jan Phyl",
+        "ReportTypeDesc":"Bariatric Ambulance",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":2355,
+        "UnitCallSign":"BU002",
+        "ReportName":"24 Winston Creek",
+        "ReportTypeDesc":"Bariatric Ambulance",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2363,
+        "UnitCallSign":"CHAP1",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Other",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2364,
+        "UnitCallSign":"CHAP2",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Other",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":988,
+        "UnitCallSign":"EMS03",
+        "ReportName":"B3 Battalion 3",
+        "ReportTypeDesc":"Battalion Chief - OMD",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":989,
+        "UnitCallSign":"EMS04",
+        "ReportName":"B4 Battalion 4",
+        "ReportTypeDesc":"Battalion Chief - OMD",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":990,
+        "UnitCallSign":"EMS05",
+        "ReportName":"B5 Battalion 5",
+        "ReportTypeDesc":"Battalion Chief - OMD",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":858,
+        "UnitCallSign":"EN002",
+        "ReportName":"02 Medulla",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":859,
+        "UnitCallSign":"EN003",
+        "ReportName":"03 Lake Hamilton",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":825,
+        "UnitCallSign":"EN004",
+        "ReportName":"04 Bradley",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":857,
+        "UnitCallSign":"EN005",
+        "ReportName":"05 Jan Phyl",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":852,
+        "UnitCallSign":"EN006",
+        "ReportName":"06 Providence",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":1080,
+        "UnitCallSign":"EN008",
+        "ReportName":"08 Willow Oak",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":827,
+        "UnitCallSign":"EN010",
+        "ReportName":"10 Fort Meade",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":910,
+        "UnitCallSign":"EN011",
+        "ReportName":"11 West Lake Wales",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":849,
+        "UnitCallSign":"EN012",
+        "ReportName":"12 East Frostproof",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":908,
+        "UnitCallSign":"EN013",
+        "ReportName":"13 Watkins",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":843,
+        "UnitCallSign":"EN014",
+        "ReportName":"14 Nalcrest",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":876,
+        "UnitCallSign":"EN017",
+        "ReportName":"17 Eagle Lake",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":2258,
+        "UnitCallSign":"EN018",
+        "ReportName":"18 Cypress Gardens",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":823,
+        "UnitCallSign":"EN019",
+        "ReportName":"19 Peace Creek",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":855,
+        "UnitCallSign":"EN020",
+        "ReportName":"20 Loughman",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2262,
+        "UnitCallSign":"EN023",
+        "ReportName":"23 Kathleen",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2320,
+        "UnitCallSign":"EN024",
+        "ReportName":"24 Winston Creek",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2357,
+        "UnitCallSign":"EN025",
+        "ReportName":"25 Moore Road",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":1028,
+        "UnitCallSign":"EN026",
+        "ReportName":"26 Golfview",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":846,
+        "UnitCallSign":"EN027",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":856,
+        "UnitCallSign":"EN028",
+        "ReportName":"28 Highland City",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":909,
+        "UnitCallSign":"EN033",
+        "ReportName":"33 North Ridge",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2361,
+        "UnitCallSign":"EN035",
+        "ReportName":"35 Eaton Park",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":921,
+        "UnitCallSign":"EN036",
+        "ReportName":"36 Lake Alfred",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2318,
+        "UnitCallSign":"EN037",
+        "ReportName":"37 Solivita",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":2216,
+        "UnitCallSign":"EN038",
+        "ReportName":"38 Cottonwood",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":853,
+        "UnitCallSign":"EN039",
+        "ReportName":"39 Saddlecreek",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":919,
+        "UnitCallSign":"EN042",
+        "ReportName":"42 Four Corners",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":922,
+        "UnitCallSign":"EN044",
+        "ReportName":"44 Masterpiece",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":906,
+        "UnitCallSign":"EN046",
+        "ReportName":"46 Lake Marion Creek",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":62,
+        "UnitCallSign":"FC501",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":48,
+        "UnitCallSign":"FC502",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":83,
+        "UnitCallSign":"FC503",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":68,
+        "UnitCallSign":"FC504",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":75,
+        "UnitCallSign":"FC505",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":63,
+        "UnitCallSign":"FC506",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":34,
+        "UnitCallSign":"FC507",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Fire Chief or Deputy",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2255,
+        "UnitCallSign":"FC508",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2205,
+        "UnitCallSign":"FRD001",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Drone",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":null,
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":900,
+        "UnitCallSign":"HV009",
+        "ReportName":"35 Eaton Park",
+        "ReportTypeDesc":"Special Operations",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":841,
+        "UnitCallSign":"LD001",
+        "ReportName":"01 Babson Park",
+        "ReportTypeDesc":"Engine",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":2354,
+        "UnitCallSign":"LD015",
+        "ReportName":"15 Mulberry",
+        "ReportTypeDesc":"Special Operations",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":2374,
+        "UnitCallSign":"LD023",
+        "ReportName":"23 Kathleen",
+        "ReportTypeDesc":"Ladder",
+        "PrimaryProgram":"Fire Supression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2376,
+        "UnitCallSign":"LD042",
+        "ReportName":"42 Four Corners",
+        "ReportTypeDesc":"Ladder",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2353,
+        "UnitCallSign":"MA003",
+        "ReportName":"03 Lake Hamilton",
+        "ReportTypeDesc":"Water Rescue Unit",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":2366,
+        "UnitCallSign":"MA027",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Water Rescue Unit",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":949,
+        "UnitCallSign":"MD001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Medical Director",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2359,
+        "UnitCallSign":"MD009",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":880,
+        "UnitCallSign":"MD016",
+        "ReportName":"16 Auburndale",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":881,
+        "UnitCallSign":"MD029",
+        "ReportName":"29 Winter Haven",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":96,
+        "UnitCallSign":"MD031",
+        "ReportName":"31 West Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":938,
+        "UnitCallSign":"MD032",
+        "ReportName":"32 East Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":939,
+        "UnitCallSign":"MD034",
+        "ReportName":"34 South Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":2304,
+        "UnitCallSign":"MD202",
+        "ReportName":"02 Medulla",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":2360,
+        "UnitCallSign":"MD209",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":885,
+        "UnitCallSign":"MD216",
+        "ReportName":"16 Auburndale",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":2375,
+        "UnitCallSign":"MD222",
+        "ReportName":"22 Gibsonia",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":886,
+        "UnitCallSign":"MD229",
+        "ReportName":"29 Winter Haven",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":937,
+        "UnitCallSign":"MD231",
+        "ReportName":"31 West Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":941,
+        "UnitCallSign":"MD232",
+        "ReportName":"32 East Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":927,
+        "UnitCallSign":"MD234",
+        "ReportName":"34 South Lakeland",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":943,
+        "UnitCallSign":"MD329",
+        "ReportName":"29 Winter Haven",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":894,
+        "UnitCallSign":"MR002",
+        "ReportName":"02 Medulla",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":893,
+        "UnitCallSign":"MR005",
+        "ReportName":"05 Jan Phyl",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":892,
+        "UnitCallSign":"MR006",
+        "ReportName":"06 Providence",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":887,
+        "UnitCallSign":"MR007",
+        "ReportName":"07 Polk City",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":828,
+        "UnitCallSign":"MR010",
+        "ReportName":"10 Fort Meade",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":926,
+        "UnitCallSign":"MR011",
+        "ReportName":"11 West Lake Wales",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":850,
+        "UnitCallSign":"MR012",
+        "ReportName":"12 East Frostproof",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":2356,
+        "UnitCallSign":"MR013",
+        "ReportName":"13 Watkins",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":844,
+        "UnitCallSign":"MR014",
+        "ReportName":"14 Nalcrest",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":890,
+        "UnitCallSign":"MR015",
+        "ReportName":"15 Mulberry",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":898,
+        "UnitCallSign":"MR017",
+        "ReportName":"17 Eagle Lake",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":1010,
+        "UnitCallSign":"MR018",
+        "ReportName":"18 Cypress Gardens",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":2351,
+        "UnitCallSign":"MR020",
+        "ReportName":"20 Loughman",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":879,
+        "UnitCallSign":"MR022",
+        "ReportName":"22 Gibsonia",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2259,
+        "UnitCallSign":"MR023",
+        "ReportName":"23 Kathleen",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2319,
+        "UnitCallSign":"MR024",
+        "ReportName":"24 Winston Creek",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2379,
+        "UnitCallSign":"MR025",
+        "ReportName":"25 Moore Road",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":833,
+        "UnitCallSign":"MR026",
+        "ReportName":"26 Golfview",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":891,
+        "UnitCallSign":"MR028",
+        "ReportName":"28 Highland City",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":1076,
+        "UnitCallSign":"MR030",
+        "ReportName":"30 Haines City",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":924,
+        "UnitCallSign":"MR033",
+        "ReportName":"33 North Ridge",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2362,
+        "UnitCallSign":"MR035",
+        "ReportName":"35 Eaton Park",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medcial Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":925,
+        "UnitCallSign":"MR036",
+        "ReportName":"36 Lake Alfred",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":1009,
+        "UnitCallSign":"MR037",
+        "ReportName":"37 Solivita",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":888,
+        "UnitCallSign":"MR038",
+        "ReportName":"38 Cottonwood",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":899,
+        "UnitCallSign":"MR039",
+        "ReportName":"39 Saddlecreek",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":935,
+        "UnitCallSign":"MR042",
+        "ReportName":"42 Four Corners",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":934,
+        "UnitCallSign":"MR045",
+        "ReportName":"45 Dundee",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":959,
+        "UnitCallSign":"MR046",
+        "ReportName":"46 Lake Marion Creek",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":2154,
+        "UnitCallSign":"MR218",
+        "ReportName":"18 Cypress Gardens",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":1143,
+        "UnitCallSign":"MR222",
+        "ReportName":"22 Gibsonia",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2155,
+        "UnitCallSign":"MR230",
+        "ReportName":"30 Haines City",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":2156,
+        "UnitCallSign":"MR239",
+        "ReportName":"39 Saddlecreek",
+        "ReportTypeDesc":"Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":2256,
+        "UnitCallSign":"OPS01",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2215,
+        "UnitCallSign":"PEVAN01",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Public Education",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":81,
+        "UnitCallSign":"PIO1",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Communications",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2367,
+        "UnitCallSign":"PIO2",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Communications",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":1086,
+        "UnitCallSign":"PS001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Deputy County Manager",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2212,
+        "UnitCallSign":"PUBED01",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Public Education",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":916,
+        "UnitCallSign":"PV001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":915,
+        "UnitCallSign":"PV002",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":929,
+        "UnitCallSign":"PV003",
+        "ReportName":"05 Jan Phyl",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":932,
+        "UnitCallSign":"PV004",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":914,
+        "UnitCallSign":"PV005",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":918,
+        "UnitCallSign":"PV006",
+        "ReportName":"39 Saddlecreek",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 3"
+    },
+    {
+        "UnitCallSignID":917,
+        "UnitCallSign":"PV007",
+        "ReportName":"19 Peace Creek",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":911,
+        "UnitCallSign":"PV008",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":913,
+        "UnitCallSign":"PV009",
+        "ReportName":"33 North Ridge",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":930,
+        "UnitCallSign":"PV010",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":928,
+        "UnitCallSign":"PV011",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":912,
+        "UnitCallSign":"PV012",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":936,
+        "UnitCallSign":"PV013",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":931,
+        "UnitCallSign":"PV014",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Prevention",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2170,
+        "UnitCallSign":"RA001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2171,
+        "UnitCallSign":"RA002",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2172,
+        "UnitCallSign":"RA003",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2173,
+        "UnitCallSign":"RA004",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2174,
+        "UnitCallSign":"RA005",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2175,
+        "UnitCallSign":"RA006",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2176,
+        "UnitCallSign":"RA007",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2177,
+        "UnitCallSign":"RA008",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2178,
+        "UnitCallSign":"RA009",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2179,
+        "UnitCallSign":"RA010",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2180,
+        "UnitCallSign":"RA011",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2181,
+        "UnitCallSign":"RA012",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2182,
+        "UnitCallSign":"RA013",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2183,
+        "UnitCallSign":"RA014",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Ambulance",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2160,
+        "UnitCallSign":"RE001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2161,
+        "UnitCallSign":"RE002",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2162,
+        "UnitCallSign":"RE003",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2163,
+        "UnitCallSign":"RE004",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2164,
+        "UnitCallSign":"RE005",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2165,
+        "UnitCallSign":"RE006",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2166,
+        "UnitCallSign":"RE007",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2167,
+        "UnitCallSign":"RE008",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2168,
+        "UnitCallSign":"RE009",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2169,
+        "UnitCallSign":"RE010",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2213,
+        "UnitCallSign":"RE011",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2214,
+        "UnitCallSign":"RE012",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve Engine",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":735,
+        "UnitCallSign":"RQ501",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":736,
+        "UnitCallSign":"RQ502",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":111,
+        "UnitCallSign":"RQ503",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":516,
+        "UnitCallSign":"RQ504",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":811,
+        "UnitCallSign":"RQ505",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":812,
+        "UnitCallSign":"RQ506",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":813,
+        "UnitCallSign":"RQ507",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":814,
+        "UnitCallSign":"RQ508",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":815,
+        "UnitCallSign":"RQ509",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Reserve Rescue",
+        "PrimaryProgram":"Emergency Medical Services",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2197,
+        "UnitCallSign":"RT001",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve F150s",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2195,
+        "UnitCallSign":"RT002",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve F150s",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2194,
+        "UnitCallSign":"RT003",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve F150s",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2193,
+        "UnitCallSign":"RT004",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Reserve F150s",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2257,
+        "UnitCallSign":"SF501",
+        "ReportName":"B1 Battalion 1",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":null,
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2349,
+        "UnitCallSign":"SF502",
+        "ReportName":"B2 Battalion 2",
+        "ReportTypeDesc":"Battalion Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":null,
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":788,
+        "UnitCallSign":"SOC1",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Special Operations Chief",
+        "PrimaryProgram":"Operations Leadership",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2198,
+        "UnitCallSign":"SOTRK01",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2199,
+        "UnitCallSign":"SOTRK02",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":2251,
+        "UnitCallSign":"SPLY01",
+        "ReportName":"HQ\/Administration",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":null,
+        "ServiceLevel":null,
+        "BattalionName":"Area Wide"
+    },
+    {
+        "UnitCallSignID":895,
+        "UnitCallSign":"SQ007",
+        "ReportName":"07 Polk City",
+        "ReportTypeDesc":"Special Operations",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":837,
+        "UnitCallSign":"SQ021",
+        "ReportName":"21 Caloosa Lake",
+        "ReportTypeDesc":"Special Operations",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":826,
+        "UnitCallSign":"TE004",
+        "ReportName":"04 Bradley",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":870,
+        "UnitCallSign":"TE006",
+        "ReportName":"06 Providence",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2207,
+        "UnitCallSign":"TE007",
+        "ReportName":"07 Polk City",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2350,
+        "UnitCallSign":"TE012",
+        "ReportName":"12 East Frostproof",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":1134,
+        "UnitCallSign":"TE013",
+        "ReportName":"13 Watkins",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 5"
+    },
+    {
+        "UnitCallSignID":872,
+        "UnitCallSign":"TE015",
+        "ReportName":"15 Mulberry",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":2378,
+        "UnitCallSign":"TE019",
+        "ReportName":"19 Peace Creek",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 4"
+    },
+    {
+        "UnitCallSignID":871,
+        "UnitCallSign":"TE020",
+        "ReportName":"20 Loughman",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":2344,
+        "UnitCallSign":"TE023",
+        "ReportName":"23 Kathleen",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":2358,
+        "UnitCallSign":"TE025",
+        "ReportName":"25 Moore Road",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 1"
+    },
+    {
+        "UnitCallSignID":847,
+        "UnitCallSign":"TE027",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Tender",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":961,
+        "UnitCallSign":"TM001",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":962,
+        "UnitCallSign":"TM002",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":963,
+        "UnitCallSign":"TM003",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":964,
+        "UnitCallSign":"TM004",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":965,
+        "UnitCallSign":"TM005",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":966,
+        "UnitCallSign":"TM006",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":967,
+        "UnitCallSign":"TM007",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":968,
+        "UnitCallSign":"TM008",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":969,
+        "UnitCallSign":"TM009",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":970,
+        "UnitCallSign":"TM010",
+        "ReportName":"09 Bartow",
+        "ReportTypeDesc":"Special Operations SWAT",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"ALS",
+        "BattalionName":"Battalion 6"
+    },
+    {
+        "UnitCallSignID":920,
+        "UnitCallSign":"TW033",
+        "ReportName":"33 North Ridge",
+        "ReportTypeDesc":"Special Operations",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 2"
+    },
+    {
+        "UnitCallSignID":848,
+        "UnitCallSign":"UT027",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Other",
+        "PrimaryProgram":"Fire Suppression",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    },
+    {
+        "UnitCallSignID":2323,
+        "UnitCallSign":"WR014",
+        "ReportName":"27 Indian Lakes Estates",
+        "ReportTypeDesc":"Water Rescue Unit",
+        "PrimaryProgram":"Special Operations",
+        "ServiceLevel":"BLS",
+        "BattalionName":"Battalion 7"
+    }
+]
