@@ -37,6 +37,7 @@
               <option value="Battalion 4">Battalion 4</option>
               <option value="Battalion 5">Battalion 5</option>
               <option value="Battalion 6">Battalion 6</option>
+              <option value="Battalion 7">Battalion 7</option>
             </select>
           </div>
 
@@ -53,15 +54,15 @@
 
       <div class="topbar-right">
         <div class="status-chip">
-          <span class="status-label">Last Updated</span>
-          <span id="lastUpdated">--</span>
+          <span class="status-label">Data Last Updated</span>
+          <span id="lastUpdated">02/12/2026</span>
         </div>
       </div>
     </header>
 
     <main class="dashboard-grid">
       <section class="summary-row">
-        <article class="summary-card card">
+        <article class="summary-card card" id="turnoutKpiCard">
           <div class="summary-label">Turnout Compliance</div>
           <div class="summary-value" id="kpiTurnout">--</div>
           <div class="summary-subtext">Overall compliant turnout rate</div>
@@ -77,6 +78,12 @@
           <div class="summary-label">Ambulance UHU</div>
           <div class="summary-value" id="kpiUHU">--</div>
           <div class="summary-subtext">Average utilization factor</div>
+        </article>
+
+        <article class="summary-card card">
+          <div class="summary-label">STEMI Cases</div>
+          <div class="summary-value" id="kpiStemi">--</div>
+          <div class="summary-subtext">Cases in the current view</div>
         </article>
 
         <article class="summary-card card">
@@ -157,23 +164,13 @@
           <div class="panel-header">
             <div>
               <h2>STEMI Cases</h2>
-              <p>Selected case metrics and transport timing details</p>
+              <p>Grouped by receiving hospital with case volume and average dispatch-to-destination time</p>
             </div>
           </div>
 
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Incident</th>
-                  <th>Patient</th>
-                  <th>DOB</th>
-                  <th>Destination</th>
-                  <th>Dispatch to Destination</th>
-                </tr>
-              </thead>
-              <tbody id="stemiTableBody"></tbody>
-            </table>
+          <div id="stemiView" class="stemi-view"></div>
+          <div id="stemiEmptyState" class="stemi-empty" hidden>
+            No STEMI cases in the current view.
           </div>
         </article>
 
@@ -182,6 +179,14 @@
             <div>
               <h2>Overdue Reports</h2>
               <p>Documentation status grouped by crew member. Hover a person to inspect overdue incidents.</p>
+            </div>
+
+            <div class="panel-controls">
+              <label for="reportsSort">Sort</label>
+              <select id="reportsSort">
+                <option value="count">Report Count</option>
+                <option value="battalion">Battalion Number</option>
+              </select>
             </div>
           </div>
 

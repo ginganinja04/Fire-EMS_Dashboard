@@ -1,0 +1,87 @@
+Dashboard Prototype Evaluation Survey
+
+Form Description
+This evaluation is based on a prototype using historical/static data. Please answer based on usability, clarity, and how useful the system would be if populated with live operational data.
+
+Suggested Scale for Rating Questions
+1 = Strongly Disagree
+2 = Disagree
+3 = Neutral
+4 = Agree
+5 = Strongly Agree
+
+Section 1: Context
+
+1. What is your role?
+Response type: Short answer
+
+2. Which battalion do you primarily work with?
+Response type: Multiple choice
+
+3. How familiar are you with the kinds of information shown in this dashboard?
+Response type: Multiple choice
+Options:
+- Not familiar
+- Slightly familiar
+- Moderately familiar
+- Very familiar
+- Extremely familiar
+
+Section 2: Overall Impressions
+
+4. The dashboard was easy to understand on first use.
+Response type: Linear scale (1-5)
+
+5. The layout made it easy to find important information.
+Response type: Linear scale (1-5)
+
+6. The dashboard appeared relevant to battalion chief responsibilities.
+Response type: Linear scale (1-5)
+
+7. If this dashboard were live and current, I would expect it to be useful in my workflow.
+Response type: Linear scale (1-5)
+
+Section 3: Usability and Design
+
+8. It was easy to understand the filters, KPI cards, and drill-down views.
+Response type: Linear scale (1-5)
+
+9. The labels, colors, and highlighting were clear and meaningful.
+Response type: Linear scale (1-5)
+
+10. The dashboard felt visually organized and easy to scan.
+Response type: Linear scale (1-5)
+
+Section 4: Workflow Fit
+
+11. The way information is grouped matches how I think about battalion operations.
+Response type: Linear scale (1-5)
+
+12. The dashboard supports the kinds of questions I would want answered.
+Response type: Linear scale (1-5)
+
+13. If live data were available, I could see myself using this during a shift.
+Response type: Linear scale (1-5)
+
+14. If populated with live data, this dashboard would be worth adopting or piloting further.
+Response type: Linear scale (1-5)
+
+Section 5: Open Response
+
+15. What part of the dashboard was most useful or promising?
+Response type: Paragraph
+
+16. What part was most confusing or least useful?
+Response type: Paragraph
+
+17. What information or feature is missing?
+Response type: Paragraph
+
+18. If this were turned into a live system, what would need to change before it would be useful to you?
+Response type: Paragraph
+
+Suggested Required Questions
+- Question 1
+- Question 2
+- Questions 4 through 14
+- Questions 15 and 16

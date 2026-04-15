@@ -6,6 +6,7 @@ let overdueData = [];
 let unitCallSignData = [];
 let activeOosSeverityFilter = null;
 let currentFilteredOos = [];
+let currentFilteredOverdue = [];
 
 let turnoutChart = null;
 let uhuChart = null;
@@ -22,16 +23,20 @@ const activeBattalion = document.getElementById("activeBattalion");
 const lastUpdated = document.getElementById("lastUpdated");
 
 const kpiTurnout = document.getElementById("kpiTurnout");
+const turnoutKpiCard = document.getElementById("turnoutKpiCard");
 const kpiOOS = document.getElementById("kpiOOS");
 const kpiUHU = document.getElementById("kpiUHU");
+const kpiStemi = document.getElementById("kpiStemi");
 const kpiReports = document.getElementById("kpiReports");
 
 const oosView = document.getElementById("oosView");
 const oosEmptyState = document.getElementById("oosEmptyState");
 const oosLegendButtons = Array.from(document.querySelectorAll("[data-oos-severity]"));
-const stemiTableBody = document.getElementById("stemiTableBody");
+const stemiView = document.getElementById("stemiView");
+const stemiEmptyState = document.getElementById("stemiEmptyState");
 const reportsView = document.getElementById("reportsView");
 const reportsEmptyState = document.getElementById("reportsEmptyState");
+const reportsSort = document.getElementById("reportsSort");
 
 const DEBUG = true;
 
@@ -64,10 +69,14 @@ function formatMinutesAsDuration(value) {
   return `${wholeMinutes}m ${String(seconds).padStart(2, "0")}s`;
 }
 
-function formatDateTimeNow() {
-  const now = new Date();
-  const pad = (n) => String(n).padStart(2, "0");
-  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+function formatMinutesLabel(value) {
+  const minutes = Number(value);
+
+  if (!Number.isFinite(minutes)) {
+    return "Unknown";
+  }
+
+  return `${Math.round(minutes)} min`;
 }
 
 function normalizeValue(value) {
@@ -97,6 +106,59 @@ function getRecordBattalion(record) {
     record.battalionNumber ??
     ""
   );
+}
+
+function getBattalionSortValue(label) {
+  const match = String(label ?? "").match(/battalion\s+(\d+)/i);
+  return match ? Number(match[1]) : Number.POSITIVE_INFINITY;
+}
+
+function compareBattalionLabels(a, b) {
+  const aNumber = getBattalionSortValue(a);
+  const bNumber = getBattalionSortValue(b);
+
+  if (Number.isFinite(aNumber) && Number.isFinite(bNumber) && aNumber !== bNumber) {
+    return aNumber - bNumber;
+  }
+
+  if (Number.isFinite(aNumber) !== Number.isFinite(bNumber)) {
+    return Number.isFinite(aNumber) ? -1 : 1;
+  }
+
+  return String(a ?? "").localeCompare(String(b ?? ""));
+}
+
+function populateBattalionFilterOptions(...datasets) {
+  const selectedValue = battalionFilter.value;
+  const battalions = new Set(["All"]);
+
+  datasets.flat().forEach((record) => {
+    const battalion = getRecordBattalion(record);
+
+    if (battalion && /^Battalion\s+\d+$/i.test(String(battalion).trim())) {
+      battalions.add(battalion);
+    }
+  });
+
+  const orderedBattalions = Array.from(battalions)
+    .filter((battalion) => battalion !== "All")
+    .sort(compareBattalionLabels);
+
+  battalionFilter.replaceChildren();
+
+  const allOption = document.createElement("option");
+  allOption.value = "All";
+  allOption.textContent = "All";
+  battalionFilter.appendChild(allOption);
+
+  orderedBattalions.forEach((battalion) => {
+    const option = document.createElement("option");
+    option.value = battalion;
+    option.textContent = battalion;
+    battalionFilter.appendChild(option);
+  });
+
+  battalionFilter.value = battalions.has(selectedValue) ? selectedValue : "All";
 }
 
 function getRecordShift(record) {
@@ -249,7 +311,11 @@ function updateTurnoutSortLabel() {
   turnoutSortUnitOption.textContent = battalionFilter.value === "All" ? "Battalion" : "Unit";
 }
 
-function updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredOverdue) {
+function getSelectedBattalionLabel() {
+  return getSelectedFilters().battalion;
+}
+
+function updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredStemi, filteredOverdue) {
   const totalCalls = filteredTurnout.reduce((sum, row) => sum + safeNumber(row.total_calls), 0);
   const metCalls = filteredTurnout.reduce((sum, row) => sum + safeNumber(row.met_calls), 0);
   const turnoutRate = totalCalls > 0 ? metCalls / totalCalls : 0;
@@ -262,9 +328,20 @@ function updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredOverdue) 
     ? uhuValues.reduce((sum, v) => sum + v, 0) / uhuValues.length
     : 0;
 
+  turnoutKpiCard.classList.remove("turnout-kpi-good", "turnout-kpi-warning", "turnout-kpi-critical");
+
+  if (turnoutRate >= 0.9) {
+    turnoutKpiCard.classList.add("turnout-kpi-good");
+  } else if (turnoutRate >= 0.7) {
+    turnoutKpiCard.classList.add("turnout-kpi-warning");
+  } else {
+    turnoutKpiCard.classList.add("turnout-kpi-critical");
+  }
+
   kpiTurnout.textContent = formatPercent(turnoutRate);
   kpiOOS.textContent = filteredOos.length;
   kpiUHU.textContent = avgUhu.toFixed(2);
+  kpiStemi.textContent = filteredStemi.length;
   kpiReports.textContent = filteredOverdue.length;
 }
 
@@ -462,6 +539,44 @@ function enrichOosDataWithBattalion(rows, lookup) {
   });
 }
 
+function buildOverdueIncidentLookup(rows) {
+  return rows.reduce((lookup, row) => {
+    const incident = String(row.incident ?? row.incident_id ?? "").trim();
+
+    if (incident) {
+      lookup.set(incident, row);
+    }
+
+    return lookup;
+  }, new Map());
+}
+
+function enrichStemiDataWithBattalion(rows, overdueLookup, unitLookup) {
+  return rows.map((row) => {
+    const cadNumber = String(row.cad_number ?? "").trim();
+    const overdueIncident = cadNumber.replace(/^S/i, "");
+    const overdueMatch = overdueLookup.get(overdueIncident);
+    const matchedUnit = String(
+      overdueMatch?.vehicle_id ??
+      overdueMatch?.unit ??
+      ""
+    ).trim().toUpperCase();
+    const unitMatch = matchedUnit ? unitLookup.get(matchedUnit) : null;
+
+    return {
+      ...row,
+      cad_number_clean: overdueIncident,
+      unit: matchedUnit || row.unit || "",
+      battalion: unitMatch?.BattalionName ?? overdueMatch?.station_group ?? row.battalion ?? "",
+      station: overdueMatch?.station ?? row.station ?? "",
+      shift: overdueMatch?.shift ?? row.shift ?? "",
+      matched_overdue_incident: overdueMatch?.incident ?? "",
+      matched_overdue_status: overdueMatch?.epcr_status ?? "",
+      matched_report_unit: matchedUnit || ""
+    };
+  });
+}
+
 function getOosSeverity(elapsedHours) {
   if (elapsedHours >= 4) return "critical";
   if (elapsedHours >= 2) return "warning";
@@ -472,6 +587,24 @@ function getSeverityRank(severity) {
   if (severity === "critical") return 2;
   if (severity === "warning") return 1;
   return 0;
+}
+
+function getStemiUrgency(minutes) {
+  const duration = Number(minutes);
+
+  if (!Number.isFinite(duration)) {
+    return { key: "unknown", label: "Time Unknown" };
+  }
+
+  if (duration > 30) {
+    return { key: "critical", label: "Over 30 min" };
+  }
+
+  if (duration >= 25) {
+    return { key: "warning", label: "Approaching 30" };
+  }
+
+  return { key: "normal", label: "Within Target" };
 }
 
 function getUnitIconSvg(typeKey) {
@@ -612,11 +745,22 @@ function getCrewMemberName(row) {
   return [firstName, lastName].filter(Boolean).join(" ");
 }
 
+function getCrewMemberLastNameSortValue(name) {
+  const trimmedName = String(name ?? "").trim();
+
+  if (!trimmedName) {
+    return "";
+  }
+
+  const parts = trimmedName.split(/\s+/).filter(Boolean);
+  return parts.length > 1 ? parts[parts.length - 1] : trimmedName;
+}
+
 function getStationName(row) {
   return row.station ?? row.station_name ?? row.location ?? "Unknown Station";
 }
 
-function groupOverdueRowsByPerson(filteredOverdue) {
+function groupOverdueRowsByPerson(filteredOverdue, sortBy = "count") {
   const groups = new Map();
 
   filteredOverdue.forEach((row) => {
@@ -640,13 +784,20 @@ function groupOverdueRowsByPerson(filteredOverdue) {
       })
     }))
     .sort((a, b) => {
+      if (sortBy === "lastName") {
+        const lastNameDiff = getCrewMemberLastNameSortValue(a.person)
+          .localeCompare(getCrewMemberLastNameSortValue(b.person));
+        if (lastNameDiff !== 0) return lastNameDiff;
+        return a.person.localeCompare(b.person);
+      }
+
       const countDiff = b.rows.length - a.rows.length;
       if (countDiff !== 0) return countDiff;
       return a.person.localeCompare(b.person);
     });
 }
 
-function groupOverdueRowsByBattalion(filteredOverdue) {
+function groupOverdueRowsByBattalion(filteredOverdue, sortBy = "count") {
   const battalionGroups = new Map();
 
   filteredOverdue.forEach((row) => {
@@ -715,10 +866,48 @@ function groupOverdueRowsByBattalion(filteredOverdue) {
         })
     }))
     .sort((a, b) => {
+      if (sortBy === "battalion") {
+        return compareBattalionLabels(a.battalion, b.battalion);
+      }
+
       const countDiff = b.rows.length - a.rows.length;
       if (countDiff !== 0) return countDiff;
-      return a.battalion.localeCompare(b.battalion);
+      return compareBattalionLabels(a.battalion, b.battalion);
     });
+}
+
+function updateReportsSortOptions() {
+  const isAllBattalions = getSelectedBattalionLabel() === "All";
+  const nextOptions = isAllBattalions
+    ? [
+        { value: "count", label: "Report Count" },
+        { value: "battalion", label: "Battalion Number" }
+      ]
+    : [
+        { value: "count", label: "Report Count" },
+        { value: "lastName", label: "Last Name A-Z" }
+      ];
+
+  const nextValues = new Set(nextOptions.map((option) => option.value));
+  const shouldReplaceOptions = reportsSort.options.length !== nextOptions.length
+    || nextOptions.some((option, index) => {
+      const existing = reportsSort.options[index];
+      return !existing || existing.value !== option.value || existing.textContent !== option.label;
+    });
+
+  if (shouldReplaceOptions) {
+    reportsSort.replaceChildren();
+    nextOptions.forEach((optionConfig) => {
+      const option = document.createElement("option");
+      option.value = optionConfig.value;
+      option.textContent = optionConfig.label;
+      reportsSort.appendChild(option);
+    });
+  }
+
+  if (!nextValues.has(reportsSort.value)) {
+    reportsSort.value = "count";
+  }
 }
 
 function updateReportDetailPane(detailPane, row) {
@@ -1229,37 +1418,201 @@ function renderOosView(filteredOos) {
   });
 }
 
-function renderStemiTable(filteredStemi) {
-  stemiTableBody.innerHTML = "";
+function groupStemiByHospital(filteredStemi) {
+  const groups = new Map();
 
-  const rows = [...filteredStemi].slice(0, 12);
-
-  debugLog("[RENDER] stemi rows:", rows.length);
-
-  rows.forEach((row) => {
-    const tr = document.createElement("tr");
-    tr.appendChild(createCell(row.incident_id ?? row.incident_number ?? ""));
-    tr.appendChild(createCell(row.patient_name ?? ""));
-    tr.appendChild(createCell(row.patient_dob ?? ""));
-    tr.appendChild(createCell(row.destination ?? ""));
-    tr.appendChild(
-      createCell(formatMinutesAsDuration(
-        row.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
-        row.of_minutes_from_unit_dispatch_to_arrival_at_destination ??
-        ""
-      ))
+  filteredStemi.forEach((row) => {
+    const destination = row.destination ?? "Unknown Hospital";
+    const dispatchToDestination = safeNumber(
+      row.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
+      row.of_minutes_from_unit_dispatch_to_arrival_at_destination
     );
-    stemiTableBody.appendChild(tr);
+    const group = groups.get(destination) ?? {
+      destination,
+      rows: [],
+      totalDispatchToDestination: 0
+    };
+
+    group.rows.push(row);
+    group.totalDispatchToDestination += dispatchToDestination;
+    groups.set(destination, group);
+  });
+
+  return Array.from(groups.values())
+    .map((group) => {
+      const averageDispatchToDestination = group.rows.length > 0
+        ? group.totalDispatchToDestination / group.rows.length
+        : 0;
+
+      return {
+        ...group,
+        averageDispatchToDestination,
+        urgency: getStemiUrgency(averageDispatchToDestination)
+      };
+    })
+    .sort((a, b) => {
+      const urgencyDiff = getSeverityRank(b.urgency.key) - getSeverityRank(a.urgency.key);
+      if (urgencyDiff !== 0) return urgencyDiff;
+
+      const avgDiff = b.averageDispatchToDestination - a.averageDispatchToDestination;
+      if (avgDiff !== 0) return avgDiff;
+
+      const countDiff = b.rows.length - a.rows.length;
+      if (countDiff !== 0) return countDiff;
+
+      return a.destination.localeCompare(b.destination);
+    });
+}
+
+function updateStemiHospitalDetailPane(detailPane, row) {
+  const dispatchToDestination = row.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
+    row.of_minutes_from_unit_dispatch_to_arrival_at_destination;
+  const patientToDestination = row.of_minutes_from_ems_patient_contact_till_arrival_at_destination_numeric ??
+    row.of_minutes_from_ems_patient_contact_till_arrival_at_destination;
+  const first12Lead = row.of_minutes_from_patient_contact_to_first_12_lead_numeric ??
+    row.of_minutes_from_patient_contact_to_first_12_lead;
+  const sceneTime = row.patient_scene_time_numeric ?? row.patient_scene_time;
+
+  detailPane.querySelector("[data-field='incident']").textContent = row.incident_id ?? row.incident_number ?? "Unknown";
+  detailPane.querySelector("[data-field='dispatch']").textContent = formatMinutesLabel(dispatchToDestination);
+  detailPane.querySelector("[data-field='lead']").textContent = formatMinutesLabel(first12Lead);
+  detailPane.querySelector("[data-field='scene']").textContent = formatMinutesLabel(sceneTime);
+  detailPane.querySelector("[data-field='destination']").textContent = formatMinutesLabel(patientToDestination);
+  detailPane.querySelector("[data-field='arrival']").textContent = row.arrival_at_patient ?? "Unknown";
+  detailPane.querySelector("[data-field='twelveLead']").textContent = row["12_lead_performed"] ?? "Unknown";
+}
+
+function createStemiIncidentListItem(row, detailPane) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "stemi-incident-pill";
+  button.textContent = row.incident_id ?? row.incident_number ?? "Unknown";
+
+  const activate = () => {
+    detailPane.parentElement.querySelectorAll(".stemi-incident-pill.is-active").forEach((node) => {
+      node.classList.remove("is-active");
+    });
+    button.classList.add("is-active");
+    updateStemiHospitalDetailPane(detailPane, row);
+  };
+
+  button.addEventListener("mouseenter", activate);
+  button.addEventListener("focus", activate);
+  button.addEventListener("click", activate);
+
+  return { button, activate };
+}
+
+function createStemiHospitalCard(group) {
+  const card = document.createElement("article");
+  card.className = `stemi-hospital-card urgency-${group.urgency.key}`;
+  card.tabIndex = 0;
+
+  const trigger = document.createElement("div");
+  trigger.className = "stemi-hospital-trigger";
+  trigger.innerHTML = `
+    <div class="stemi-hospital-header">
+      <div class="stemi-hospital-name">${group.destination}</div>
+      <div class="stemi-hospital-badge urgency-${group.urgency.key}">${group.urgency.label}</div>
+    </div>
+    <div class="stemi-hospital-metrics">
+      <div class="stemi-hospital-metric">
+        <div class="stemi-hospital-metric-label">Cases</div>
+        <div class="stemi-hospital-metric-value">${group.rows.length}</div>
+      </div>
+      <div class="stemi-hospital-metric">
+        <div class="stemi-hospital-metric-label">Avg Dispatch to Destination</div>
+        <div class="stemi-hospital-metric-value">${formatMinutesLabel(group.averageDispatchToDestination)}</div>
+      </div>
+    </div>
+  `;
+
+  const popover = document.createElement("div");
+  popover.className = "stemi-hospital-popover";
+
+  const incidentsColumn = document.createElement("div");
+  incidentsColumn.className = "stemi-popover-column";
+
+  const incidentsTitle = document.createElement("div");
+  incidentsTitle.className = "stemi-popover-title";
+  incidentsTitle.textContent = group.rows.length > 1 ? "Incidents" : "Incident";
+
+  const incidentList = document.createElement("div");
+  incidentList.className = "stemi-incident-list";
+
+  const detailColumn = document.createElement("div");
+  detailColumn.className = "stemi-popover-column stemi-detail-popover";
+  detailColumn.innerHTML = `
+    <div class="stemi-popover-title">Timing Breakdown</div>
+    <div class="stemi-detail-incident-label">Incident <span data-field="incident"></span></div>
+    <dl class="stemi-detail-list">
+      <div><dt>Dispatch to Destination</dt><dd data-field="dispatch"></dd></div>
+      <div><dt>Patient Contact to 12-Lead</dt><dd data-field="lead"></dd></div>
+      <div><dt>Scene Time</dt><dd data-field="scene"></dd></div>
+      <div><dt>Patient Contact to Destination</dt><dd data-field="destination"></dd></div>
+      <div><dt>Arrival at Patient</dt><dd data-field="arrival"></dd></div>
+      <div><dt>12-Lead Performed</dt><dd data-field="twelveLead"></dd></div>
+    </dl>
+  `;
+
+  const listItems = group.rows
+    .slice()
+    .sort((a, b) => safeNumber(
+      b.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
+      b.of_minutes_from_unit_dispatch_to_arrival_at_destination
+    ) - safeNumber(
+      a.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
+      a.of_minutes_from_unit_dispatch_to_arrival_at_destination
+    ))
+    .map((row) => createStemiIncidentListItem(row, detailColumn));
+
+  listItems.forEach(({ button }) => incidentList.appendChild(button));
+
+  incidentsColumn.appendChild(incidentsTitle);
+  incidentsColumn.appendChild(incidentList);
+  popover.appendChild(incidentsColumn);
+  popover.appendChild(detailColumn);
+
+  card.appendChild(trigger);
+  card.appendChild(popover);
+
+  if (listItems.length > 0) {
+    listItems[0].activate();
+  }
+
+  return card;
+}
+
+function renderStemiView(filteredStemi) {
+  stemiView.innerHTML = "";
+
+  const groups = groupStemiByHospital(filteredStemi);
+
+  debugLog("[RENDER] stemi groups:", groups.length);
+
+  const hasRows = groups.length > 0;
+  stemiView.hidden = !hasRows;
+  stemiEmptyState.hidden = hasRows;
+
+  if (!hasRows) {
+    return;
+  }
+
+  groups.forEach((group) => {
+    stemiView.appendChild(createStemiHospitalCard(group));
   });
 }
 
 function renderReportsView(filteredOverdue) {
   reportsView.innerHTML = "";
+  updateReportsSortOptions();
+
+  const selectedSort = reportsSort.value;
 
   const { battalion } = getSelectedFilters();
   const groups = battalion === "All"
-    ? groupOverdueRowsByBattalion(filteredOverdue)
-    : groupOverdueRowsByPerson(filteredOverdue);
+    ? groupOverdueRowsByBattalion(filteredOverdue, selectedSort)
+    : groupOverdueRowsByPerson(filteredOverdue, selectedSort);
 
   debugLog("[RENDER] overdue groups:", groups.length);
 
@@ -1290,6 +1643,7 @@ function applyFiltersAndRender() {
   const filteredStemi = filterDataset(stemiData, "stemi");
   const filteredOverdue = filterDataset(overdueData, "overdue");
   currentFilteredOos = filteredOos;
+  currentFilteredOverdue = filteredOverdue;
 
   debugLog("[COUNTS AFTER FILTER]", {
     turnout: filteredTurnout.length,
@@ -1299,11 +1653,11 @@ function applyFiltersAndRender() {
     overdue: filteredOverdue.length
   });
 
-  updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredOverdue);
+  updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredStemi, filteredOverdue);
   renderTurnoutChart(filteredTurnout);
   renderUhuChart(filteredUhu);
   renderOosView(filteredOos);
-  renderStemiTable(filteredStemi);
+  renderStemiView(filteredStemi);
   renderReportsView(filteredOverdue);
 }
 
@@ -1355,13 +1709,23 @@ async function initializeDashboard() {
     ]);
 
     const unitCallSignLookup = buildUnitCallSignLookup(unitCallSigns);
+    const overdueIncidentLookup = buildOverdueIncidentLookup(overdueClean);
 
     turnoutData = turnoutSummary;
     uhuData = uhuSummary;
     oosData = enrichOosDataWithBattalion(oosSummary, unitCallSignLookup);
-    stemiData = stemiClean;
+    stemiData = enrichStemiDataWithBattalion(stemiClean, overdueIncidentLookup, unitCallSignLookup);
     overdueData = overdueClean;
     unitCallSignData = unitCallSigns;
+
+    populateBattalionFilterOptions(
+      turnoutData,
+      uhuData,
+      oosData,
+      stemiData,
+      overdueData,
+      unitCallSignData
+    );
 
     logDatasetInfo("turnout", turnoutData);
     logDatasetInfo("uhu", uhuData);
@@ -1370,7 +1734,6 @@ async function initializeDashboard() {
     logDatasetInfo("stemi", stemiData);
     logDatasetInfo("overdue", overdueData);
 
-    lastUpdated.textContent = formatDateTimeNow();
     applyFiltersAndRender();
   } catch (error) {
     console.error(error);
@@ -1396,6 +1759,11 @@ turnoutSort.addEventListener("change", () => {
 uhuSort.addEventListener("change", () => {
   debugLog("[EVENT] uhu sort changed to:", uhuSort.value);
   applyFiltersAndRender();
+});
+
+reportsSort.addEventListener("change", () => {
+  debugLog("[EVENT] reports sort changed to:", reportsSort.value);
+  renderReportsView(currentFilteredOverdue);
 });
 
 resetFilters.addEventListener("click", () => {
