@@ -3,6 +3,9 @@ let uhuData = [];
 let oosData = [];
 let stemiData = [];
 let overdueData = [];
+let unitCallSignData = [];
+let activeOosSeverityFilter = null;
+let currentFilteredOos = [];
 
 let turnoutChart = null;
 let uhuChart = null;
@@ -25,8 +28,10 @@ const kpiReports = document.getElementById("kpiReports");
 
 const oosView = document.getElementById("oosView");
 const oosEmptyState = document.getElementById("oosEmptyState");
+const oosLegendButtons = Array.from(document.querySelectorAll("[data-oos-severity]"));
 const stemiTableBody = document.getElementById("stemiTableBody");
-const reportsTableBody = document.getElementById("reportsTableBody");
+const reportsView = document.getElementById("reportsView");
+const reportsEmptyState = document.getElementById("reportsEmptyState");
 
 const DEBUG = true;
 
@@ -43,6 +48,20 @@ function safeNumber(value) {
 
 function formatPercent(value) {
   return `${(value * 100).toFixed(1)}%`;
+}
+
+function formatMinutesAsDuration(value) {
+  const minutes = Number(value);
+
+  if (!Number.isFinite(minutes)) {
+    return "";
+  }
+
+  const totalSeconds = Math.round(minutes * 60);
+  const wholeMinutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${wholeMinutes}m ${String(seconds).padStart(2, "0")}s`;
 }
 
 function formatDateTimeNow() {
@@ -70,6 +89,7 @@ function getSelectedFilters() {
 function getRecordBattalion(record) {
   return (
     record.battalion ??
+    record.BattalionName ??
     record.battalion_name ??
     record.station_group ??
     record.battalionname ??
@@ -114,13 +134,10 @@ function recordMatchesShift(record, selectedShift) {
 
 function filterDataset(data, datasetName = "unknown") {
   const { shift, battalion } = getSelectedFilters();
-  const isSystemWideDataset = datasetName === "oos";
 
   const filtered = data.filter((record) => {
-    const battalionMatch = isSystemWideDataset
-      ? true
-      : recordMatchesBattalion(record, battalion);
-    const shiftMatch = isSystemWideDataset
+    const battalionMatch = recordMatchesBattalion(record, battalion);
+    const shiftMatch = datasetName === "oos"
       ? true
       : recordMatchesShift(record, shift);
     return battalionMatch && shiftMatch;
@@ -412,6 +429,39 @@ function getUnitTypeDetails(unitId) {
   return unitTypeMap[prefix] ?? { key: "unknown", label: "Unknown Unit Type", shortLabel: "??" };
 }
 
+function buildUnitCallSignLookup(rows) {
+  return rows.reduce((lookup, row) => {
+    const unit = String(row.UnitCallSign ?? "").trim().toUpperCase();
+
+    if (unit) {
+      lookup.set(unit, row);
+    }
+
+    return lookup;
+  }, new Map());
+}
+
+function enrichOosDataWithBattalion(rows, lookup) {
+  return rows.map((row) => {
+    const unit = String(row.unit ?? "").trim().toUpperCase();
+    const match = lookup.get(unit);
+
+    if (!match) {
+      return row;
+    }
+
+    return {
+      ...row,
+      unit,
+      battalion: match.BattalionName ?? row.battalion ?? "",
+      report_name: match.ReportName ?? row.report_name ?? "",
+      report_type: match.ReportTypeDesc ?? row.report_type ?? "",
+      primary_program: match.PrimaryProgram ?? row.primary_program ?? "",
+      service_level: match.ServiceLevel ?? row.service_level ?? ""
+    };
+  });
+}
+
 function getOosSeverity(elapsedHours) {
   if (elapsedHours >= 4) return "critical";
   if (elapsedHours >= 2) return "warning";
@@ -529,6 +579,465 @@ function getUnitIconSvg(typeKey) {
   };
 
   return icons[typeKey] ?? icons.unknown;
+}
+
+function getPersonReportIconSvg() {
+  return `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="8" cy="6.5" r="2.5"></circle>
+      <path d="M4.5 18v-2.2c0-2.5 1.8-4.8 4.6-4.8 1.1 0 2.1.3 2.9.9"></path>
+      <path d="M13 4.5h5.5l2 2V19a1 1 0 0 1-1 1H13a1 1 0 0 1-1-1v-13.5a1 1 0 0 1 1-1z"></path>
+      <path d="M18.5 4.5V7h2"></path>
+      <path d="M14.7 11h3.8"></path>
+      <path d="M14.7 14h3.8"></path>
+      <path d="M14.7 17h2.6"></path>
+    </svg>
+  `;
+}
+
+function getCrewMemberName(row) {
+  const rawName = row.crew_member_completing ?? row.crew_member ?? row.assigned_to ?? "Unassigned";
+  const normalizedName = String(rawName ?? "").trim();
+
+  if (!normalizedName || normalizedName === "Unassigned") {
+    return "Unassigned";
+  }
+
+  if (!normalizedName.includes(",")) {
+    return normalizedName;
+  }
+
+  const [lastName, firstName] = normalizedName.split(",").map((part) => part.trim()).filter(Boolean);
+
+  return [firstName, lastName].filter(Boolean).join(" ");
+}
+
+function getStationName(row) {
+  return row.station ?? row.station_name ?? row.location ?? "Unknown Station";
+}
+
+function groupOverdueRowsByPerson(filteredOverdue) {
+  const groups = new Map();
+
+  filteredOverdue.forEach((row) => {
+    const person = getCrewMemberName(row);
+    const group = groups.get(person) ?? {
+      person,
+      rows: []
+    };
+
+    group.rows.push(row);
+    groups.set(person, group);
+  });
+
+  return Array.from(groups.values())
+    .map((group) => ({
+      ...group,
+      rows: group.rows.sort((a, b) => {
+        const aDate = a.incident_date_parsed ? new Date(a.incident_date_parsed).getTime() : 0;
+        const bDate = b.incident_date_parsed ? new Date(b.incident_date_parsed).getTime() : 0;
+        return aDate - bDate;
+      })
+    }))
+    .sort((a, b) => {
+      const countDiff = b.rows.length - a.rows.length;
+      if (countDiff !== 0) return countDiff;
+      return a.person.localeCompare(b.person);
+    });
+}
+
+function groupOverdueRowsByBattalion(filteredOverdue) {
+  const battalionGroups = new Map();
+
+  filteredOverdue.forEach((row) => {
+    const battalion = getRecordBattalion(row) || "Unknown Battalion";
+    const station = getStationName(row);
+    const person = getCrewMemberName(row);
+
+    const battalionGroup = battalionGroups.get(battalion) ?? {
+      battalion,
+      rows: [],
+      stations: new Map()
+    };
+
+    battalionGroup.rows.push(row);
+
+    const stationGroup = battalionGroup.stations.get(station) ?? {
+      station,
+      rows: [],
+      people: new Map()
+    };
+
+    stationGroup.rows.push(row);
+
+    const personGroup = stationGroup.people.get(person) ?? {
+      person,
+      rows: []
+    };
+
+    personGroup.rows.push(row);
+    stationGroup.people.set(person, personGroup);
+    battalionGroup.stations.set(station, stationGroup);
+    battalionGroups.set(battalion, battalionGroup);
+  });
+
+  return Array.from(battalionGroups.values())
+    .map((battalionGroup) => ({
+      battalion: battalionGroup.battalion,
+      rows: battalionGroup.rows,
+      stations: Array.from(battalionGroup.stations.values())
+        .map((stationGroup) => ({
+          station: stationGroup.station,
+          rows: stationGroup.rows.sort((a, b) => {
+            const aDate = a.incident_date_parsed ? new Date(a.incident_date_parsed).getTime() : 0;
+            const bDate = b.incident_date_parsed ? new Date(b.incident_date_parsed).getTime() : 0;
+            return aDate - bDate;
+          }),
+          people: Array.from(stationGroup.people.values())
+            .map((personGroup) => ({
+              person: personGroup.person,
+              rows: personGroup.rows.sort((a, b) => {
+                const aDate = a.incident_date_parsed ? new Date(a.incident_date_parsed).getTime() : 0;
+                const bDate = b.incident_date_parsed ? new Date(b.incident_date_parsed).getTime() : 0;
+                return aDate - bDate;
+              })
+            }))
+            .sort((a, b) => {
+              const countDiff = b.rows.length - a.rows.length;
+              if (countDiff !== 0) return countDiff;
+              return a.person.localeCompare(b.person);
+            })
+        }))
+        .sort((a, b) => {
+          const countDiff = b.rows.length - a.rows.length;
+          if (countDiff !== 0) return countDiff;
+          return a.station.localeCompare(b.station);
+        })
+    }))
+    .sort((a, b) => {
+      const countDiff = b.rows.length - a.rows.length;
+      if (countDiff !== 0) return countDiff;
+      return a.battalion.localeCompare(b.battalion);
+    });
+}
+
+function updateReportDetailPane(detailPane, row) {
+  detailPane.querySelector("[data-field='incident']").textContent = row.incident ?? row.incident_id ?? "Unknown";
+  detailPane.querySelector("[data-field='date']").textContent = row.incident_date ?? "Unknown";
+  detailPane.querySelector("[data-field='unit']").textContent = row.vehicle_id ?? row.unit ?? "Unknown";
+  detailPane.querySelector("[data-field='status']").textContent = row.epcr_status ?? "Unknown";
+  detailPane.querySelector("[data-field='station']").textContent = row.station ?? "Unknown";
+  detailPane.querySelector("[data-field='shift']").textContent = row.shift ?? "Unknown";
+}
+
+function createReportIncidentListItem(row, detailPane) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "report-incident-pill";
+  button.textContent = row.incident ?? row.incident_id ?? "Unknown";
+
+  const activate = () => {
+    detailPane.parentElement.querySelectorAll(".report-incident-pill.is-active").forEach((node) => {
+      node.classList.remove("is-active");
+    });
+    button.classList.add("is-active");
+    updateReportDetailPane(detailPane, row);
+  };
+
+  button.addEventListener("mouseenter", activate);
+  button.addEventListener("focus", activate);
+  button.addEventListener("click", activate);
+
+  return { button, activate };
+}
+
+function createReportGroupCard(group) {
+  const card = document.createElement("article");
+  card.className = "report-group-card";
+  card.tabIndex = 0;
+
+  const trigger = document.createElement("div");
+  trigger.className = "report-group-trigger";
+
+  const iconWrap = document.createElement("div");
+  iconWrap.className = "report-group-icon";
+  iconWrap.setAttribute("aria-hidden", "true");
+  iconWrap.innerHTML = getPersonReportIconSvg();
+
+  const countBadge = document.createElement("span");
+  countBadge.className = "report-group-count";
+  countBadge.textContent = group.rows.length;
+  iconWrap.appendChild(countBadge);
+
+  const label = document.createElement("div");
+  label.className = "report-group-label";
+  label.textContent = group.person;
+
+  const sublabel = document.createElement("div");
+  sublabel.className = "report-group-sublabel";
+  sublabel.textContent = `${group.rows.length} overdue report${group.rows.length === 1 ? "" : "s"}`;
+
+  trigger.appendChild(iconWrap);
+  trigger.appendChild(label);
+  trigger.appendChild(sublabel);
+
+  const popover = document.createElement("div");
+  popover.className = "report-group-popover";
+
+  const incidentsColumn = document.createElement("div");
+  incidentsColumn.className = "report-popover-column";
+
+  const incidentsTitle = document.createElement("div");
+  incidentsTitle.className = "report-popover-title";
+  incidentsTitle.textContent = "Incidents";
+
+  const incidentList = document.createElement("div");
+  incidentList.className = "report-incident-list";
+
+  const detailColumn = document.createElement("div");
+  detailColumn.className = "report-popover-column report-detail-pane";
+  detailColumn.innerHTML = `
+    <div class="report-detail-incident" data-field="incident"></div>
+    <dl class="report-detail-list">
+      <div><dt>Date</dt><dd data-field="date"></dd></div>
+      <div><dt>Unit</dt><dd data-field="unit"></dd></div>
+      <div><dt>Status</dt><dd data-field="status"></dd></div>
+      <div><dt>Station</dt><dd data-field="station"></dd></div>
+      <div><dt>Shift</dt><dd data-field="shift"></dd></div>
+    </dl>
+  `;
+
+  const listItems = group.rows.map((row) => createReportIncidentListItem(row, detailColumn));
+  listItems.forEach(({ button }) => incidentList.appendChild(button));
+
+  incidentsColumn.appendChild(incidentsTitle);
+  incidentsColumn.appendChild(incidentList);
+  popover.appendChild(incidentsColumn);
+  popover.appendChild(detailColumn);
+
+  card.appendChild(trigger);
+  card.appendChild(popover);
+
+  if (listItems.length > 0) {
+    listItems[0].activate();
+  }
+
+  return card;
+}
+
+function updateBattalionReportIncidentDetail(detailPane, row) {
+  detailPane.querySelector("[data-field='person']").textContent = getCrewMemberName(row);
+  detailPane.querySelector("[data-field='incident']").textContent = row.incident ?? row.incident_id ?? "Unknown";
+  detailPane.querySelector("[data-field='date']").textContent = row.incident_date ?? "Unknown";
+  detailPane.querySelector("[data-field='unit']").textContent = row.vehicle_id ?? row.unit ?? "Unknown";
+  detailPane.querySelector("[data-field='status']").textContent = row.epcr_status ?? "Unknown";
+  detailPane.querySelector("[data-field='shift']").textContent = row.shift ?? "Unknown";
+}
+
+function createBattalionReportGroupCard(group) {
+  const card = document.createElement("article");
+  card.className = "report-group-card";
+  card.tabIndex = 0;
+
+  const trigger = document.createElement("div");
+  trigger.className = "report-group-trigger";
+
+  const iconWrap = document.createElement("div");
+  iconWrap.className = "report-group-icon";
+  iconWrap.setAttribute("aria-hidden", "true");
+  iconWrap.innerHTML = getPersonReportIconSvg();
+
+  const countBadge = document.createElement("span");
+  countBadge.className = "report-group-count";
+  countBadge.textContent = group.rows.length;
+  iconWrap.appendChild(countBadge);
+
+  const label = document.createElement("div");
+  label.className = "report-group-label";
+  label.textContent = group.battalion;
+
+  const sublabel = document.createElement("div");
+  sublabel.className = "report-group-sublabel";
+  sublabel.textContent = `${group.stations.length} station${group.stations.length === 1 ? "" : "s"} with overdue reports`;
+
+  trigger.appendChild(iconWrap);
+  trigger.appendChild(label);
+  trigger.appendChild(sublabel);
+
+  const popover = document.createElement("div");
+  popover.className = "report-group-popover report-group-popover-wide";
+
+  const stationsColumn = document.createElement("div");
+  stationsColumn.className = "report-popover-column";
+
+  const stationsTitle = document.createElement("div");
+  stationsTitle.className = "report-popover-title";
+  stationsTitle.textContent = "Stations";
+
+  const stationList = document.createElement("div");
+  stationList.className = "report-station-list";
+
+  const detailColumn = document.createElement("div");
+  detailColumn.className = "report-popover-column report-detail-pane report-battalion-detail-pane";
+  detailColumn.innerHTML = `
+    <div class="report-detail-header">
+      <div class="report-detail-station" data-field="station"></div>
+      <div class="report-detail-station-meta" data-field="stationMeta"></div>
+    </div>
+    <div class="report-battalion-breakdown">
+      <div class="report-battalion-people-pane">
+        <div class="report-popover-title">People</div>
+        <div class="report-person-list" data-field="personList"></div>
+      </div>
+      <div class="report-incident-detail-card" data-field="incidentDetailCard" hidden>
+        <div class="report-detail-person" data-field="person"></div>
+        <div class="report-person-meta" data-field="personMeta"></div>
+        <div class="report-incident-detail-layout">
+          <div class="report-incident-picker-pane" data-field="incidentPickerPane">
+            <div class="report-popover-title report-incidents-title" data-field="incidentsTitle">Incidents</div>
+            <div class="report-incident-list" data-field="incidentList"></div>
+          </div>
+          <div class="report-incident-breakdown-pane">
+            <div class="report-detail-incident" data-field="incident"></div>
+            <dl class="report-detail-list">
+              <div><dt>Date</dt><dd data-field="date"></dd></div>
+              <div><dt>Unit</dt><dd data-field="unit"></dd></div>
+              <div><dt>Status</dt><dd data-field="status"></dd></div>
+              <div><dt>Shift</dt><dd data-field="shift"></dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const personList = detailColumn.querySelector("[data-field='personList']");
+  const incidentList = detailColumn.querySelector("[data-field='incidentList']");
+  const incidentsTitle = detailColumn.querySelector("[data-field='incidentsTitle']");
+  const incidentPickerPane = detailColumn.querySelector("[data-field='incidentPickerPane']");
+  const personMeta = detailColumn.querySelector("[data-field='personMeta']");
+  const stationMeta = detailColumn.querySelector("[data-field='stationMeta']");
+  const incidentDetailCard = detailColumn.querySelector("[data-field='incidentDetailCard']");
+
+  const activatePerson = (personGroup, personButton) => {
+    personList.querySelectorAll(".report-person-pill.is-active").forEach((node) => {
+      node.classList.remove("is-active");
+    });
+    personButton.classList.add("is-active");
+
+    detailColumn.querySelector("[data-field='person']").textContent = personGroup.person;
+    personMeta.textContent = `${personGroup.rows.length} overdue incident${personGroup.rows.length === 1 ? "" : "s"}`;
+
+    incidentList.innerHTML = "";
+    incidentDetailCard.hidden = false;
+    updateBattalionReportIncidentDetail(detailColumn, {});
+
+    const hasMultipleIncidents = personGroup.rows.length > 1;
+    incidentsTitle.hidden = !hasMultipleIncidents;
+    incidentList.hidden = !hasMultipleIncidents;
+    incidentPickerPane.hidden = !hasMultipleIncidents;
+
+    const incidentButtons = hasMultipleIncidents ? personGroup.rows.map((row) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "report-incident-pill report-incident-pill-station";
+      button.textContent = row.incident ?? row.incident_id ?? "Unknown";
+
+      const activate = () => {
+        incidentList.querySelectorAll(".report-incident-pill.is-active").forEach((node) => {
+          node.classList.remove("is-active");
+        });
+        button.classList.add("is-active");
+        updateBattalionReportIncidentDetail(detailColumn, row);
+      };
+
+      button.addEventListener("focus", activate);
+      button.addEventListener("click", activate);
+
+      return { button, activate };
+    }) : [];
+
+    incidentButtons.forEach(({ button }) => incidentList.appendChild(button));
+
+    if (hasMultipleIncidents && incidentButtons.length > 0) {
+      incidentButtons[0].activate();
+    } else if (personGroup.rows.length > 0) {
+      updateBattalionReportIncidentDetail(detailColumn, personGroup.rows[0]);
+    }
+  };
+
+  const activateStation = (stationGroup, stationButton) => {
+    stationList.querySelectorAll(".report-station-pill.is-active").forEach((node) => {
+      node.classList.remove("is-active");
+    });
+    stationButton.classList.add("is-active");
+
+    detailColumn.querySelector("[data-field='station']").textContent = stationGroup.station;
+    stationMeta.textContent = `${stationGroup.rows.length} overdue report${stationGroup.rows.length === 1 ? "" : "s"} across ${stationGroup.people.length} person${stationGroup.people.length === 1 ? "" : "s"}`;
+
+    personList.innerHTML = "";
+    incidentList.innerHTML = "";
+    incidentList.hidden = false;
+    incidentsTitle.hidden = false;
+    incidentDetailCard.hidden = true;
+    detailColumn.querySelector("[data-field='person']").textContent = "";
+    personMeta.textContent = "";
+    updateBattalionReportIncidentDetail(detailColumn, {});
+
+    const personButtons = stationGroup.people.map((personGroup) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "report-person-pill";
+      button.innerHTML = `
+        <span class="report-person-pill-name">${personGroup.person}</span>
+        <span class="report-person-pill-count">${personGroup.rows.length}</span>
+      `;
+
+      const activate = () => {
+        activatePerson(personGroup, button);
+      };
+
+      button.addEventListener("focus", activate);
+      button.addEventListener("click", activate);
+
+      return { button, activate };
+    });
+
+    personButtons.forEach(({ button }) => personList.appendChild(button));
+  };
+
+  const stationButtons = group.stations.map((stationGroup) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "report-station-pill";
+    button.innerHTML = `
+      <span class="report-station-pill-name">${stationGroup.station}</span>
+      <span class="report-station-pill-count">${stationGroup.rows.length}</span>
+    `;
+
+    const activate = () => activateStation(stationGroup, button);
+    button.addEventListener("mouseenter", activate);
+    button.addEventListener("focus", activate);
+    button.addEventListener("click", activate);
+
+    return { button, activate };
+  });
+
+  stationButtons.forEach(({ button }) => stationList.appendChild(button));
+
+  stationsColumn.appendChild(stationsTitle);
+  stationsColumn.appendChild(stationList);
+  popover.appendChild(stationsColumn);
+  popover.appendChild(detailColumn);
+
+  card.appendChild(trigger);
+  card.appendChild(popover);
+
+  if (stationButtons.length > 0) {
+    stationButtons[0].activate();
+  }
+
+  return card;
 }
 
 function groupOosRowsByUnitType(filteredOos) {
@@ -684,15 +1193,36 @@ function createOosGroupCard(group) {
   return card;
 }
 
+function setActiveOosSeverityFilter(severity) {
+  activeOosSeverityFilter = activeOosSeverityFilter === severity ? null : severity;
+  updateOosLegendState();
+  renderOosView(currentFilteredOos);
+}
+
+function updateOosLegendState() {
+  oosLegendButtons.forEach((button) => {
+    const isActive = button.dataset.oosSeverity === activeOosSeverityFilter;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
 function renderOosView(filteredOos) {
   oosView.innerHTML = "";
 
-  const groups = groupOosRowsByUnitType(filteredOos);
+  const visibleRows = activeOosSeverityFilter
+    ? filteredOos.filter((row) => getOosSeverity(safeNumber(row.elapsed_hours)) === activeOosSeverityFilter)
+    : filteredOos;
+
+  const groups = groupOosRowsByUnitType(visibleRows);
   debugLog("[RENDER] oos groups:", groups.length);
 
   const hasRows = groups.length > 0;
   oosView.hidden = !hasRows;
   oosEmptyState.hidden = hasRows;
+  oosEmptyState.textContent = activeOosSeverityFilter
+    ? "No out of service units match the selected time filter in the current view."
+    : "No out of service units in the current view.";
 
   groups.forEach((group) => {
     oosView.appendChild(createOosGroupCard(group));
@@ -713,37 +1243,36 @@ function renderStemiTable(filteredStemi) {
     tr.appendChild(createCell(row.patient_dob ?? ""));
     tr.appendChild(createCell(row.destination ?? ""));
     tr.appendChild(
-      createCell(
-        row.minutes_unit_dispatch_to_destination_numeric ??
-        row.minutes_unit_dispatch_to_destination ??
+      createCell(formatMinutesAsDuration(
+        row.of_minutes_from_unit_dispatch_to_arrival_at_destination_numeric ??
+        row.of_minutes_from_unit_dispatch_to_arrival_at_destination ??
         ""
-      )
+      ))
     );
     stemiTableBody.appendChild(tr);
   });
 }
 
-function renderReportsTable(filteredOverdue) {
-  reportsTableBody.innerHTML = "";
+function renderReportsView(filteredOverdue) {
+  reportsView.innerHTML = "";
 
-  const rows = [...filteredOverdue].sort((a, b) => {
-    const aDate = a.incident_date_parsed ? new Date(a.incident_date_parsed).getTime() : 0;
-    const bDate = b.incident_date_parsed ? new Date(b.incident_date_parsed).getTime() : 0;
-    return aDate - bDate;
-  });
+  const { battalion } = getSelectedFilters();
+  const groups = battalion === "All"
+    ? groupOverdueRowsByBattalion(filteredOverdue)
+    : groupOverdueRowsByPerson(filteredOverdue);
 
-  const visibleRows = rows.slice(0, 20);
+  debugLog("[RENDER] overdue groups:", groups.length);
 
-  debugLog("[RENDER] overdue rows:", visibleRows.length);
+  const hasRows = groups.length > 0;
+  reportsView.hidden = !hasRows;
+  reportsEmptyState.hidden = hasRows;
 
-  visibleRows.forEach((row) => {
-    const tr = document.createElement("tr");
-    tr.appendChild(createCell(row.incident ?? row.incident_id ?? ""));
-    tr.appendChild(createCell(row.incident_date ?? ""));
-    tr.appendChild(createCell(row.vehicle_id ?? row.unit ?? ""));
-    tr.appendChild(createCell(row.epcr_status ?? ""));
-    tr.appendChild(createCell(row.crew_member_completing ?? ""));
-    reportsTableBody.appendChild(tr);
+  groups.forEach((group) => {
+    reportsView.appendChild(
+      battalion === "All"
+        ? createBattalionReportGroupCard(group)
+        : createReportGroupCard(group)
+    );
   });
 }
 
@@ -760,6 +1289,7 @@ function applyFiltersAndRender() {
   const filteredOos = filterDataset(oosData, "oos");
   const filteredStemi = filterDataset(stemiData, "stemi");
   const filteredOverdue = filterDataset(overdueData, "overdue");
+  currentFilteredOos = filteredOos;
 
   debugLog("[COUNTS AFTER FILTER]", {
     turnout: filteredTurnout.length,
@@ -774,7 +1304,7 @@ function applyFiltersAndRender() {
   renderUhuChart(filteredUhu);
   renderOosView(filteredOos);
   renderStemiTable(filteredStemi);
-  renderReportsTable(filteredOverdue);
+  renderReportsView(filteredOverdue);
 }
 
 async function loadJson(path) {
@@ -812,25 +1342,31 @@ async function initializeDashboard() {
       turnoutSummary,
       uhuSummary,
       oosSummary,
+      unitCallSigns,
       stemiClean,
       overdueClean
     ] = await Promise.all([
       loadJson("data/processed/turnout_summary.json"),
       loadJson("data/processed/uhu_summary.json"),
       loadJson("data/processed/oos_summary.json"),
+      loadJson("data/processed/PCFR_Unit_Call_Signs.json"),
       loadJson("data/processed/stemi_clean.json"),
       loadJson("data/processed/overdue_reports_clean.json")
     ]);
 
+    const unitCallSignLookup = buildUnitCallSignLookup(unitCallSigns);
+
     turnoutData = turnoutSummary;
     uhuData = uhuSummary;
-    oosData = oosSummary;
+    oosData = enrichOosDataWithBattalion(oosSummary, unitCallSignLookup);
     stemiData = stemiClean;
     overdueData = overdueClean;
+    unitCallSignData = unitCallSigns;
 
     logDatasetInfo("turnout", turnoutData);
     logDatasetInfo("uhu", uhuData);
     logDatasetInfo("oos", oosData);
+    logDatasetInfo("unit-call-signs", unitCallSignData);
     logDatasetInfo("stemi", stemiData);
     logDatasetInfo("overdue", overdueData);
 
@@ -869,8 +1405,17 @@ resetFilters.addEventListener("click", () => {
   battalionFilter.value = "All";
   turnoutSort.value = "compliance";
   uhuSort.value = "uhu";
+  activeOosSeverityFilter = null;
+  updateOosLegendState();
 
   applyFiltersAndRender();
+});
+
+oosLegendButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    debugLog("[EVENT] oos severity filter changed to:", button.dataset.oosSeverity);
+    setActiveOosSeverityFilter(button.dataset.oosSeverity);
+  });
 });
 
 initializeDashboard();

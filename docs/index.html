@@ -15,6 +15,40 @@
         <p class="subtitle">
           Fire-rescue operational overview for battalion-level situational awareness
         </p>
+
+        <section class="filter-bar" aria-label="Dashboard filters">
+          <div class="filter-group">
+            <label for="shiftFilter">Shift</label>
+            <select id="shiftFilter">
+              <option value="All">All</option>
+              <option value="A">A Shift</option>
+              <option value="B">B Shift</option>
+              <option value="C">C Shift</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="battalionFilter">Battalion</label>
+            <select id="battalionFilter">
+              <option value="All">All</option>
+              <option value="Battalion 1">Battalion 1</option>
+              <option value="Battalion 2">Battalion 2</option>
+              <option value="Battalion 3">Battalion 3</option>
+              <option value="Battalion 4">Battalion 4</option>
+              <option value="Battalion 5">Battalion 5</option>
+              <option value="Battalion 6">Battalion 6</option>
+            </select>
+          </div>
+
+          <div class="filter-actions">
+            <button id="resetFilters" class="secondary-btn">Reset</button>
+          </div>
+
+          <div class="active-filters">
+            <span class="active-pill">Shift: <strong id="activeShift">All</strong></span>
+            <span class="active-pill">Battalion: <strong id="activeBattalion">All</strong></span>
+          </div>
+        </section>
       </div>
 
       <div class="topbar-right">
@@ -24,40 +58,6 @@
         </div>
       </div>
     </header>
-
-    <section class="filter-bar card">
-      <div class="filter-group">
-        <label for="shiftFilter">Shift</label>
-        <select id="shiftFilter">
-          <option value="All">All</option>
-          <option value="A">A Shift</option>
-          <option value="B">B Shift</option>
-          <option value="C">C Shift</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="battalionFilter">Battalion</label>
-        <select id="battalionFilter">
-          <option value="All">All</option>
-          <option value="Battalion 1">Battalion 1</option>
-          <option value="Battalion 2">Battalion 2</option>
-          <option value="Battalion 3">Battalion 3</option>
-          <option value="Battalion 4">Battalion 4</option>
-          <option value="Battalion 5">Battalion 5</option>
-          <option value="Battalion 6">Battalion 6</option>
-        </select>
-      </div>
-
-      <div class="filter-actions">
-        <button id="resetFilters" class="secondary-btn">Reset Filters</button>
-      </div>
-
-      <div class="active-filters">
-        <span class="active-pill">Shift: <strong id="activeShift">All</strong></span>
-        <span class="active-pill">Battalion: <strong id="activeBattalion">All</strong></span>
-      </div>
-    </section>
 
     <main class="dashboard-grid">
       <section class="summary-row">
@@ -117,10 +117,10 @@
             </div>
           </div>
 
-          <div class="oos-legend" aria-hidden="true">
-            <span class="oos-legend-chip severity-normal">Under 2 hrs</span>
-            <span class="oos-legend-chip severity-warning">2 to 4 hrs</span>
-            <span class="oos-legend-chip severity-critical">4+ hrs</span>
+          <div class="oos-legend" aria-label="Filter out of service units by time">
+            <button type="button" class="oos-legend-chip severity-normal" data-oos-severity="normal" aria-pressed="false">Under 2 hrs</button>
+            <button type="button" class="oos-legend-chip severity-warning" data-oos-severity="warning" aria-pressed="false">2 to 4 hrs</button>
+            <button type="button" class="oos-legend-chip severity-critical" data-oos-severity="critical" aria-pressed="false">4+ hrs</button>
           </div>
 
           <div id="oosView" class="oos-view"></div>
@@ -181,23 +181,13 @@
           <div class="panel-header">
             <div>
               <h2>Overdue Reports</h2>
-              <p>Documentation status and assigned crew member</p>
+              <p>Documentation status grouped by crew member. Hover a person to inspect overdue incidents.</p>
             </div>
           </div>
 
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Incident</th>
-                  <th>Date</th>
-                  <th>Unit</th>
-                  <th>Status</th>
-                  <th>Crew Member</th>
-                </tr>
-              </thead>
-              <tbody id="reportsTableBody"></tbody>
-            </table>
+          <div id="reportsView" class="reports-view"></div>
+          <div id="reportsEmptyState" class="reports-empty" hidden>
+            No overdue reports in the current view.
           </div>
         </article>
       </section>
