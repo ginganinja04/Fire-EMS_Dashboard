@@ -11,14 +11,12 @@ let currentFilteredOverdue = [];
 let turnoutChart = null;
 let uhuChart = null;
 
-const shiftFilter = document.getElementById("shiftFilter");
 const battalionFilter = document.getElementById("battalionFilter");
 const turnoutSort = document.getElementById("turnoutSort");
 const turnoutSortUnitOption = turnoutSort.querySelector('option[value="unit"]');
 const uhuSort = document.getElementById("uhuSort");
 const resetFilters = document.getElementById("resetFilters");
 
-const activeShift = document.getElementById("activeShift");
 const activeBattalion = document.getElementById("activeBattalion");
 const lastUpdated = document.getElementById("lastUpdated");
 
@@ -83,14 +81,8 @@ function normalizeValue(value) {
   return String(value ?? "").trim().toLowerCase();
 }
 
-function parseShiftFromValue(value) {
-  if (value === "All") return "All";
-  return String(value ?? "").trim().charAt(0).toUpperCase();
-}
-
 function getSelectedFilters() {
   return {
-    shift: parseShiftFromValue(shiftFilter.value),
     battalion: battalionFilter.value
   };
 }
@@ -181,32 +173,14 @@ function recordMatchesBattalion(record, selectedBattalion) {
   return recordBattalion === selected;
 }
 
-function recordMatchesShift(record, selectedShift) {
-  if (selectedShift === "All") return true;
-
-  const rawShift = getRecordShift(record);
-  const recordShift = String(rawShift ?? "").trim().charAt(0).toUpperCase();
-
-  if (!recordShift) {
-    return false;
-  }
-
-  return recordShift === selectedShift;
-}
-
 function filterDataset(data, datasetName = "unknown") {
-  const { shift, battalion } = getSelectedFilters();
+  const { battalion } = getSelectedFilters();
 
   const filtered = data.filter((record) => {
-    const battalionMatch = recordMatchesBattalion(record, battalion);
-    const shiftMatch = datasetName === "oos"
-      ? true
-      : recordMatchesShift(record, shift);
-    return battalionMatch && shiftMatch;
+    return recordMatchesBattalion(record, battalion);
   });
 
   debugLog(`[FILTER] ${datasetName}`, {
-    selectedShift: shift,
     selectedBattalion: battalion,
     before: data.length,
     after: filtered.length
@@ -299,7 +273,6 @@ function sortUhuData(data) {
 
 function updateActiveFilterDisplay() {
   const selected = getSelectedFilters();
-  activeShift.textContent = selected.shift;
   activeBattalion.textContent = selected.battalion;
 }
 
@@ -1741,11 +1714,6 @@ async function initializeDashboard() {
   }
 }
 
-shiftFilter.addEventListener("change", () => {
-  debugLog("[EVENT] shift changed to:", shiftFilter.value);
-  applyFiltersAndRender();
-});
-
 battalionFilter.addEventListener("change", () => {
   debugLog("[EVENT] battalion changed to:", battalionFilter.value);
   applyFiltersAndRender();
@@ -1769,7 +1737,6 @@ reportsSort.addEventListener("change", () => {
 resetFilters.addEventListener("click", () => {
   debugLog("[EVENT] reset clicked");
 
-  shiftFilter.value = "All";
   battalionFilter.value = "All";
   turnoutSort.value = "compliance";
   uhuSort.value = "uhu";

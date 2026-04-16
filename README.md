@@ -9,7 +9,7 @@ This repository supports an Information Visualization project focused on short-t
 The current dashboard includes:
 
 - KPI summary cards
-- Turnout compliance chart with shift and battalion filtering
+- Turnout compliance chart with battalion filtering
 - Out-of-service unit view grouped by unit type with iconography
 - Ambulance UHU / workload chart
 - STEMI case table
