@@ -23,6 +23,7 @@ const lastUpdated = document.getElementById("lastUpdated");
 const kpiTurnout = document.getElementById("kpiTurnout");
 const turnoutKpiCard = document.getElementById("turnoutKpiCard");
 const kpiOOS = document.getElementById("kpiOOS");
+const oosKpiCard = document.getElementById("oosKpiCard");
 const kpiUHU = document.getElementById("kpiUHU");
 const kpiStemi = document.getElementById("kpiStemi");
 const kpiReports = document.getElementById("kpiReports");
@@ -309,6 +310,27 @@ function updateKpis(filteredTurnout, filteredOos, filteredUhu, filteredStemi, fi
     turnoutKpiCard.classList.add("turnout-kpi-warning");
   } else {
     turnoutKpiCard.classList.add("turnout-kpi-critical");
+  }
+
+  oosKpiCard.classList.remove("oos-kpi-good", "oos-kpi-warning", "oos-kpi-critical");
+
+  // Determine max severity among all OOS units
+  const maxSeverity = filteredOos.length === 0 
+    ? "normal"
+    : filteredOos
+        .map((row) => getOosSeverity(safeNumber(row.elapsed_hours)))
+        .reduce((max, severity) => {
+          const maxRank = getSeverityRank(max);
+          const currentRank = getSeverityRank(severity);
+          return currentRank > maxRank ? severity : max;
+        }, "normal");
+
+  if (maxSeverity === "critical") {
+    oosKpiCard.classList.add("oos-kpi-critical");
+  } else if (maxSeverity === "warning") {
+    oosKpiCard.classList.add("oos-kpi-warning");
+  } else {
+    oosKpiCard.classList.add("oos-kpi-good");
   }
 
   kpiTurnout.textContent = formatPercent(turnoutRate);
